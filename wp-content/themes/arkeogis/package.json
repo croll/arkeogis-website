@@ -1,0 +1,62 @@
+{
+  "name": "arkeogis-web",
+  "version": "1.0.0",
+  "description": "Theme for arkeogis website",
+  "author": "Christophe Beveraggi",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "Arkegis",
+    "Theme"
+  ],
+  "homepage": "https://github.com/beve/arkeogis-web/#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beve/arkeogis-web.git"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@testing-library/dom": "^7.26.3",
+    "@wordpress/scripts": "^12.1.0",
+    "babel-loader": "^8.1.0",
+    "babel-register": "^6.26.0",
+    "css-loader": "^5.0.0",
+    "dir-archiver": "^1.1.1",
+    "html-webpack-plugin": "^4.5.0",
+    "jest": "^26.6.0",
+    "node-sass": "^4.14.1",
+    "rtlcss": "^2.5.0",
+    "sass-loader": "^10.0.3",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.1.3",
+    "webpack-cli": "^4.1.0"
+  },
+  "rtlcssConfig": {
+    "options": {
+      "autoRename": false,
+      "autoRenameStrict": false,
+      "blacklist": {},
+      "clean": true,
+      "greedy": false,
+      "processUrls": false,
+      "stringMap": []
+    },
+    "plugins": [],
+    "map": false
+  },
+  "scripts": {
+    "watch-sass": "node-sass src/sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
+    "build": "webpack",
+    "compile:css": "node-sass src/sass/ -o ./ && stylelint '*.css' --fix || true && stylelint '*.css' --fix",
+    "compile:rtl": "rtlcss style.css style-rtl.css",
+    "lint:scss": "wp-scripts lint-style 'src/sass/**/*.scss'",
+    "lint:js": "wp-scripts lint-js 'js/*.js'",
+    "bundle": "dir-archiver --src . --dest ../theme.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map"
+  },
+  "dependencies": {
+    "mini-css-extract-plugin": "^1.2.1"
+  }
+}

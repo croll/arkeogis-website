@@ -1,0 +1,15 @@
+body {
+  font-family: "OpenSans";
+  main#primary {
+    margin-top: var(--menu-height);
+  }
+}
+
+body.logged-in {
+  header.site-header {
+    margin-top: 50px;
+  }
+  #page {
+    margin-top: (var(--site-header) + 40px);
+  }
+}

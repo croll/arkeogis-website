@@ -1,0 +1,19 @@
+.cookie-notice-container {
+  display: none;
+  background-color: var(--main-color-primary);
+  #cn-notice-text {
+  }
+  #cn-notice-buttons {
+    a {
+     background-color: var(--main-color-primary);
+     @include up-to-large-screen {
+       margin-top: 15px;
+     }
+    }
+  }
+  .cn-close-icon {
+    &:before, &:after {
+      color: #fff;
+    }
+  }
+}

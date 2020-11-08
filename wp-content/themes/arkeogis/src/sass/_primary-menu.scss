@@ -1,0 +1,31 @@
+nav.main-navigation {
+  z-index: 1;
+  color: var(--color-secondary);
+  a {
+    transition: all 0.3s;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  & > div {
+    /* Main container */
+    ul#primary-menu {
+      & > li {
+        /* First level */
+        & > a {
+          /* Links of first level */
+          display: inline-block;
+          font-size: 4vh;
+          padding-bottom: 0px;
+          margin-bottom: 2vh;
+          border-bottom: 1px solid transparent;
+          &:hover {
+            border-bottom: 1px solid var(--main-color-accent);
+          }
+        }
+      }
+    }
+  }
+}

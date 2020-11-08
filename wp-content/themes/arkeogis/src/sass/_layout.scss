@@ -1,15 +1,19 @@
 body {
   font-family: "OpenSans";
   main#primary {
-    margin-top: var(--menu-height);
+    // margin-top: var(--menu-height);
   }
 }
 
 body.logged-in {
   header.site-header {
-    margin-top: 50px;
+    margin-top: 32px;
   }
   #page {
     margin-top: (var(--site-header) + 40px);
+    .landing-block {
+      // height: calc( 100vh - calc(var(--menu-height) + 30px));
+      // padding-top: calc( 100vh - calc(var(--menu-height) + 30px));
+    }
   }
 }

@@ -1,2 +1,227 @@
 body.home {
+  .landing-block {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding-top: var(--menu-height);
+    background-image: url("../../../uploads/2020/11/arkeogis-header.jpg");
+    background-size: cover;
+    background-position: center;
+    padding-left: var(--layout-padding);
+    padding-right: var(--layout-padding);
+    z-index: 1;
+    .main-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      h1 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 46px;
+        line-height: 63px;
+        text-transform: uppercase;
+        text-align: center;
+        color: var(--color-secondary);
+      }
+      h2 {
+        margin: 18px 0 0 0;
+        text-transform: uppercase;
+        font-size: 20px;
+        line-height: 27px;
+        text-align: center;
+        color: var(--color-secondary);
+      }
+      .button-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-top: 53px;
+        a,
+        a:visited {
+          display: block;
+          text-decoration: none;
+          text-transform: uppercase;
+          font-size: 13px;
+          line-height: 18px;
+          font-weight: bold;
+          color: var(--color-secondary);
+          min-width: 240px;
+          text-align: center;
+        }
+        a:first-child {
+          border: 1px solid #fff;
+          border-radius: 1000px;
+          padding: 20px 35px;
+          &:hover {
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-accent);
+          }
+        }
+        a:last-child {
+          border: 1px solid var(--color-accent);
+          background-color: var(--color-accent);
+          color: #000;
+          border-radius: 1000px;
+          padding: 20px 35px;
+          margin-left: 51px;
+          &:hover {
+            border: 1px solid #fff;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+    .logos-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-evenly;
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: calc(100vw - 120px);
+      padding-top: 8px;
+      padding-bottom: 20px;
+      max-width: 1320px;
+      transform: translateX(-50%);
+      background-color: #fff;
+      border-radius: 20px;
+      .strasbourg {
+        width: 142px;
+        height: 51px;
+      }
+      .archimede {
+        height: 51px;
+      }
+      .misha {
+        width: 62px;
+        height: 81px;
+      }
+      .masa {
+        width: 110px;
+        height: 53px;
+      }
+      .humanum {
+        width: 176px;
+        height: 35px;
+      }
+    }
+  }
+
+  .platform-block {
+    position: relative;
+    background-color: #2e3338;
+    padding-top: 158px;
+    padding-bottom: 100px;
+    .background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("../assets/images/curves.png");
+    }
+    .gradient {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(46, 51, 56, 0) 0%, #2e3338 100%);
+      z-index: -1;
+    }
+    h2 {
+      padding: 0;
+      font-weight: 300;
+      font-size: 34px;
+      line-height: 46px;
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      b {
+        display: block;
+        color: var(--color-accent);
+      }
+    }
+    .video-container {
+      position: relative;
+      width: 858px;
+      height: 509px;
+      border-radius: 15px;
+      background-color: #fff;
+      margin: 69px auto 0 auto;
+      z-index: 200;
+      .dots-container {
+        position: absolute;
+        display: flex;
+        top: 11px;
+        left: 21px;
+        width: 45px;
+        justify-content: space-between;
+        align-items: center;
+        & > div {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #ebebeb;
+        }
+      }
+    }
+    .specs-container {
+      display: grid;
+      max-width: 1023px;
+      row-gap: 100px;
+      column-gap: 50px;
+      margin-top: 171px;
+      margin-left: auto;
+      margin-right: auto;
+      grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+      .spec {
+        max-width: 268px;
+        h3 {
+          margin: 0;
+          font-weight: 600;
+          font-size: 30px;
+          line-height: 37px;
+          color: #fff;
+          min-height: 70px;
+          display: flex;
+          align-items: center;
+          position: relative;
+          .num {
+            position: absolute;
+            bottom: 0px;
+            left: -20px;
+            font-weight: 600;
+            font-size: 100px;
+            line-height: 136px;
+            color: #fff;
+            opacity: 0.1;
+          }
+        }
+        .text {
+          margin-top: 18px;
+          color: #fff;
+          min-height: 110px;
+        }
+        a {
+          position: absolute;
+          display: block;
+          width: 20px;
+          height: 15px;
+          margin-top: 20px;
+          &:before {
+            content: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.5576 6.46989L13.3898 0.418116C12.8216 -0.139372 11.8742 -0.139372 11.3059 0.418116C10.7377 0.975604 10.7377 1.90503 11.3059 2.46251L14.9474 6.05669H1.47369C0.652971 6.05669 0 6.69729 0 7.50246C0 8.30763 0.652971 8.94823 1.47369 8.94823H14.9474L11.3051 12.5215C10.7368 13.079 10.7368 14.0085 11.3051 14.5659C11.5995 14.8548 11.9786 15 12.3577 15C12.7369 15 13.116 14.8556 13.4104 14.5659L19.5576 8.53523C19.8314 8.26657 20 7.89463 20 7.50254C20 7.11045 19.8528 6.73851 19.5576 6.46985L19.5576 6.46989Z' fill='%23F4B511'/%3E%3C/svg%3E");
+            width: 20px;
+            height: 15px;
+            display: block;
+          }
+        }
+      }
+    }
+  }
 }

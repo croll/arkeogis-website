@@ -39,6 +39,9 @@ header.site-header {
       font-weight: bold;
       color: var(--color-secondary);
       text-align: left;
+      &:hover {
+        color: var(--color-accent);
+      }
     }
     & > div {
       /* Main container */
@@ -143,7 +146,7 @@ header.site-header {
     &:hover {
       button {
         opacity: 1;
-        color: var(--color-secondary);
+        color: var(--color-accent);
       }
       & > ul {
         left: 0;

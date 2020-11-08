@@ -4,11 +4,12 @@ body.home {
     width: 100%;
     height: 100vh;
     padding-top: var(--menu-height);
-    background-image: url("../../../uploads/2020/11/arkeogis-header.jpg");
-    background-size: cover;
     background-position: center;
     padding-left: var(--layout-padding);
     padding-right: var(--layout-padding);
+    isolation: isolate;
+    background-image: url("../../../uploads/2020/11/arkeogis-header.jpg");
+    background-size: cover;
     .main-container {
       position: absolute;
       top: 50%;
@@ -220,6 +221,53 @@ body.home {
             height: 15px;
             display: block;
           }
+        }
+      }
+    }
+  }
+
+  .stats-block {
+    background-color: #F2F2F2;
+    padding-top: 89px;
+    padding-bottom: 100px;
+    h2 {
+      margin: 0;
+      font-weight: 300;
+      font-size: 34px;
+      line-height: 46px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px;
+      max-width: var(--layout-width);
+      margin-left: auto;
+      margin-right: auto;
+      .stat {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        svg {
+        }
+        .num {
+          margin-top: 25px;
+          font-weight: 300;
+          font-size: 54px;
+          line-height: 35px;
+        }
+        .label {
+          margin-top: 25px;
+          font-size: 12px;
+          line-height: 18px;
+          text-transform: uppercase;
+          color: #999999;
+          font-weight: 600;
+          text-align: center;
         }
       }
     }

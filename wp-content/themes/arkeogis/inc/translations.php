@@ -16,3 +16,16 @@
   pll_register_string("diffuser le niveau", "Diffuser le niveau d’information de votre choix, et rendez le accessible dans la communautée d’utilisateurs qualifiés en indiquant comment vous citer", 'Arkeogis', true);
   pll_register_string("perenniser", "Pérenniser", 'Arkeogis', false);
   pll_register_string("des identifiants perennes", "Des identifiants pérennes DOI pour le stokage, des ARK (Archival Resource Key) pour les termes utilisés, un hébergement sécurisé et dupliqué pour une conservation à long terme", 'Arkeogis', true);
+  pll_register_string("arkeogis en chiffres", "arkeogis en quelques chiffres", 'Arkeogis', false);
+  pll_register_string("nombre de bases", "Nombre de bases de données", 'Arkeogis (datas)', false);
+  pll_register_string("bases de donnees", "Bases de données", 'Arkeogis', false);
+  pll_register_string("nombre de fonds cartographiques", "Nombre de fonds cartographiques", 'Arkeogis (datas)', false);
+  pll_register_string("fonds cartographiques communs", "Fonds cartographiques communs", 'Arkeogis', false);
+  pll_register_string("nombre de sites", "Nombre de sites", 'Arkeogis (datas)', false);
+  pll_register_string("sites", "sites", 'Arkeogis', false);
+  pll_register_string("nombre de themes de thesorus", "Nombre de termes de thesorus", 'Arkeogis (datas)', false);
+  pll_register_string("termes de thesorus", "Termes de thesorus", 'Arkeogis', false);
+  pll_register_string("nombre de chronologies", "Nombre de chronologies", 'Arkeogis (datas)', false);
+  pll_register_string("chronologies", "Chronologies", 'Arkeogis', false);
+  pll_register_string("nombre d'institutions", "Nombre d'institutions", 'Arkeogis (datas)', false);
+  pll_register_string("institutions pluridisciplinaires", "Institutions pluridisciplinaires", 'Arkeogis', false);

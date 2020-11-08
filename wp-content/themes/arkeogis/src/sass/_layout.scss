@@ -1,7 +1,8 @@
 body {
   font-family: "OpenSans";
   main#primary {
-    // margin-top: var(--menu-height);
+    position: relative;
+    z-index: 1;
   }
 }
 

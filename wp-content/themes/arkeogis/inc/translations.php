@@ -34,3 +34,8 @@
   pll_register_string("recherche", "Recherche", 'Arkeogis', false);
   pll_register_string("inventaire", "Inventaire", 'Arkeogis', false);
   pll_register_string("ouvrage", "Ouvrage", 'Arkeogis', false);
+  pll_register_string("acceder a l'application", "Accéder à l'application", 'Arkeogis', false);
+  pll_register_string("creer un compte", "Créer un compte", 'Arkeogis', false);
+  pll_register_string("contact", "Contact", 'Arkeogis', false);
+  pll_register_string("mentions legales", "Mentions légales", 'Arkeogis', false);
+  pll_register_string("conditions generales", "Conditions générales d'utilisation", 'Arkeogis', false);

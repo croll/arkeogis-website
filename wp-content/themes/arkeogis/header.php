@@ -18,7 +18,7 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
   <script>
-    // document.write('<script src="http://' + 'localhost'.split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+    document.write('<script src="http://' + 'localhost'.split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
   </script> 
 </head>
 
@@ -30,13 +30,6 @@
 	<header id="masthead" class="site-header">
 			<div class="logo">
 				<a href="/<?php if (pll_current_language() != 'fr') {echo pll_current_language().'/';} ?>">
-					<?php
-					// $custom_logo_id = get_theme_mod( 'custom_logo' );
-					// $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-					// if ( has_custom_logo() ) {
-					// 	echo '<img src="' . esc_url($logo[0]) . '" alt="' . get_bloginfo( 'name' ) . '">';
-					// }
-					?>
 					<svg width="163" height="30" viewBox="0 0 163 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M11.7966 1.8475H15.0687L26.5209 29.2962H22.3877L19.7184 22.522H6.88854L4.21923 29.2962H0L11.7966 1.8475ZM18.3407 19.2669L13.3465 6.68621H13.2604L8.18014 19.2669H18.3407Z" fill="white"/>
 					<path d="M43.2256 0H46.6699V18.915L54.4195 10.9971H59.1553L50.803 19.3548L59.9303 29.3842H55.1083L46.756 19.8827V29.3842H43.3117V0H43.2256Z" fill="white"/>

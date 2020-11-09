@@ -14,21 +14,6 @@ header.site-header {
   padding-right: 50px;
   z-index: 100;
 
-  .logo {
-    display: flex;
-    mix-blend-mode: multiply;
-    img {
-      height: 70px;
-    }
-    span {
-      display: inline-block;
-      font-family: AmpleSoft;
-      color: var(--color-secondary);
-      font-size: 36px;
-      margin-left: 16px;
-    }
-  }
-
   nav.main-navigation {
     a {
       text-transform: uppercase;

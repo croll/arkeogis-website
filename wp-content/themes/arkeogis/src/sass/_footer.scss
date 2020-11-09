@@ -1,2 +1,139 @@
 footer.site-footer {
+  background-color: #2e3338;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+  .container {
+    display: flex;
+    max-width: var(--layout-width);
+    padding-left: var(--layout-padding);
+    padding-right: var(--layout-padding);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    li {
+      list-style-type: none;
+    }
+    a {
+      display: block;
+      font-size: 14px;
+      line-height: 19px;
+      color: #fff;
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+    .logo {
+      flex: 0 0 250px;
+    }
+    a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    /* Menu */
+    & > div[class^="menu"] {
+      flex: 1 1 auto;
+      max-width: 720px;
+      & > ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        // Top level links
+        & > li.toplevel {
+          &:first-child {
+            & > a {
+              font-size: 16px;
+              &:after {
+                display: block;
+                content: "";
+                margin-top: 18px;
+                width: 25px;
+                height: 4px;
+                background-color: var(--color-accent);
+              }
+            }
+          }
+          // Entrée fond carto à passer sur 2 lignes
+          &:nth-child(2) {
+            & > a {
+              font-size: 16px;
+            }
+            a {
+              max-width: 125px;
+            }
+          }
+          & > a {
+            font-weight: bold;
+          }
+        }
+        /* Links comunauté/actus/manuel */
+        & > li:nth-child(3) {
+          grid-column: 3;
+          grid-row: 1;
+          a {
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 22px;
+          }
+        }
+        & > li:nth-child(4) {
+          grid-column: 3;
+          grid-row: 1;
+          margin-top: 60px;
+          a {
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 22px;
+          }
+        }
+        & > li:nth-child(5) {
+          grid-column: 3;
+          grid-row: 1;
+          margin-top: 118px;
+          a {
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+  }
+  .more-links {
+    font-weight: bold;
+    padding-top: 2px;
+    a {
+      font-size: 16px;
+      &:not(:first-child) {
+        margin-top: 20px;
+        &:nth-child(2) {
+          color: var(--color-accent);
+          display: flex;
+          align-items: center;
+          &:hover {
+            color: #fff !important;
+          }
+          &:after {
+            content: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.5576 6.46989L13.3898 0.418116C12.8216 -0.139372 11.8742 -0.139372 11.3059 0.418116C10.7377 0.975604 10.7377 1.90503 11.3059 2.46251L14.9474 6.05669H1.47369C0.652971 6.05669 0 6.69729 0 7.50246C0 8.30763 0.652971 8.94823 1.47369 8.94823H14.9474L11.3051 12.5215C10.7368 13.079 10.7368 14.0085 11.3051 14.5659C11.5995 14.8548 11.9786 15 12.3577 15C12.7369 15 13.116 14.8556 13.4104 14.5659L19.5576 8.53523C19.8314 8.26657 20 7.89463 20 7.50254C20 7.11045 19.8528 6.73851 19.5576 6.46985L19.5576 6.46989Z' fill='%23F4B511'/%3E%3C/svg%3E");
+            width: 20px;
+            height: 15px;
+            margin-top: 1px;
+            margin-left: 15px;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .legal {
+    position: absolute;
+    right: var(--layout-padding);
+    bottom: 30px;
+    display: flex;
+    a {
+      max-width: auto;
+      &:last-child {
+        margin-left: 50px;
+      }
+    }
+  }
 }

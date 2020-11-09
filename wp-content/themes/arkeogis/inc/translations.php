@@ -39,3 +39,4 @@
   pll_register_string("contact", "Contact", 'Arkeogis', false);
   pll_register_string("mentions legales", "Mentions légales", 'Arkeogis', false);
   pll_register_string("conditions generales", "Conditions générales d'utilisation", 'Arkeogis', false);
+  pll_register_string("dernieres actualites", "Dernières <b>actualités</b>", 'Arkeogis', false);

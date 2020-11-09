@@ -45,6 +45,9 @@ get_header();
 					<div></div>
 					<div></div>
 				</div>
+				<video muted controls>
+					<source src="http://home.beve.org/wp-content/uploads/2020/11/arkeogis_demo.mp4" type="video/mp4">
+				</video>
 			</div>
 			<div class="specs-container">
 				<div class="spec">
@@ -190,6 +193,10 @@ get_header();
 					<div class="button work" data-set="work"><?php pll_e("Ouvrage");?></div>
 				</div>
 			</div>
+		</div>
+
+		<div class="news-block">
+			<h2><?php pll_e("Dernières <b>actualités</b>");?><h2>
 		</div>
 
 	</main><!-- #main -->

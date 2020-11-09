@@ -8,8 +8,8 @@ body.home {
     background-image: url("../../../uploads/2020/11/arkeogis-header.jpg");
     background-size: cover;
     .main-container {
-    padding-left: var(--layout-padding);
-    padding-right: var(--layout-padding);
+      padding-left: var(--layout-padding);
+      padding-right: var(--layout-padding);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -136,17 +136,8 @@ body.home {
       z-index: -1;
     }
     h2 {
-      padding: 0;
-      font-weight: 300;
-      font-size: 34px;
-      line-height: 46px;
       color: #fff;
-      text-transform: uppercase;
       text-align: center;
-      b {
-        display: block;
-        color: var(--color-accent);
-      }
     }
     .video-container {
       position: relative;
@@ -157,6 +148,7 @@ body.home {
       margin: 69px auto 0 auto;
       z-index: 200;
       max-width: calc(100vw - calc(var(--layout-padding) * 2));
+      max-height: calc(calc(100vw * 0.59 ) - calc(var(--layout-padding) * 2));
       .dots-container {
         position: absolute;
         display: flex;
@@ -171,6 +163,13 @@ body.home {
           border-radius: 50%;
           background-color: #ebebeb;
         }
+      }
+      video {
+        position: absolute;
+        left: 21px;
+        top: 30px;
+        width: calc(100% - 44px);
+        height: calc(100% - 52px);
       }
     }
     .specs-container {
@@ -237,11 +236,6 @@ body.home {
     padding-left: var(--layout-padding);
     padding-right: var(--layout-padding);
     h2 {
-      margin: 0;
-      font-weight: 300;
-      font-size: 34px;
-      line-height: 46px;
-      text-transform: uppercase;
       text-align: center;
     }
     .stats-container {
@@ -287,18 +281,6 @@ body.home {
     margin-right: auto;
     padding-top: 89px;
     padding-bottom: 100px;
-    h2 {
-      margin: 0;
-      font-weight: 300;
-      font-size: 34px;
-      line-height: 46px;
-      text-transform: uppercase;
-      b {
-        display: block;
-        font-weight: 300;
-        color: var(--color-accent);
-      }
-    }
     .app {
       position: relative;
       background: #2e3338;
@@ -360,6 +342,15 @@ body.home {
             background-color: var(--color-work);
           }
         }
+      }
+    }
+  }
+
+  .news-block {
+    h2 {
+      text-align: center;
+      b {
+        display: inline;
       }
     }
   }

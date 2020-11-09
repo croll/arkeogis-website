@@ -195,6 +195,10 @@ get_header();
 			</div>
 		</div>
 
+		<?php
+			$news = get_arkeogis_news(pll_current_language(), true);
+			print_r($news);
+		?>
 		<div class="news-block">
 			<h2><?php pll_e("Dernières <b>actualités</b>");?><h2>
 		</div>

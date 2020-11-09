@@ -154,3 +154,8 @@ require get_template_directory() . '/inc/custom-post-types.php';
  * Translations.
  */
 require get_template_directory() . '/inc/translations.php';
+
+/**
+ * Utils.
+ */
+require get_template_directory() . '/inc/utils.php';

@@ -182,12 +182,13 @@ get_header();
 
 		<div class="databases-block">
 			<h2><?php pll_e("Visualiser les <b>données partagées</b>");?></h2>
-			<div class="toolbar">
-				<div class="button all" data-set="all"><?php pll_e("Toutes les données");?></div>
-				<div class="button search" data-set="search"><?php pll_e("Recherche");?></div>
-				<div class="button inventory" data-set="inventory"><?php pll_e("Inventaire");?></div>
-				<div class="button work" data-set="work"><?php pll_e("Ouvrage");?></div>
-
+			<div class="app">
+				<div class="toolbar">
+					<div class="button all" data-set="all"><?php pll_e("Toutes les données");?></div>
+					<div class="button search" data-set="search"><?php pll_e("Recherche");?></div>
+					<div class="button inventory" data-set="inventory"><?php pll_e("Inventaire");?></div>
+					<div class="button work" data-set="work"><?php pll_e("Ouvrage");?></div>
+				</div>
 			</div>
 		</div>
 

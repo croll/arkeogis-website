@@ -37,11 +37,11 @@ function get_arkeogis_news($lang, $limit = 9) {
   return $items;
 }
 
-function get_arkeogis_news_dates($lang, $num) {
+function get_arkeogis_news_dates($lang, $home_only) {
 
   $args = array(
     'post_type' => 'arkeogis_news',
-    'posts_per_page' => $num || -1,
+    'posts_per_page' => ($home_only) ? 3 : -1,
     'lang' => $lang,
     'post_status' => 'publish',
     'meta_query'     => array(
@@ -55,12 +55,21 @@ function get_arkeogis_news_dates($lang, $num) {
             'compare' => 'EXISTS'
         )
     ),
-
     'orderby'    => array(
         'news_date_clause' => 'ASC',
         'news_order_clause' => 'ASC'
     )
   );
+
+  if ($home_only) {
+    $args['meta_query'][0][] = array(
+        'news_home_clause' => array(
+            'key' => 'news_home',
+            '==' => true 
+        )
+    );
+    $args['orderby']['news_home_clause'] = 'ASC';
+  }
 
   $posts = get_posts($args);
 

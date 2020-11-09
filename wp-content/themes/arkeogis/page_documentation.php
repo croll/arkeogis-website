@@ -1,5 +1,8 @@
 <?php
-/* Template Name: Template page Documentation */
+/*
+* Template Name: Template page Documentation 
+* Template Post Type: page
+*/
 
 get_header();
 get_sidebar();

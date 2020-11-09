@@ -1,5 +1,8 @@
 <?php
-/* Template Name: Template page BDD */
+/*
+* Template Name: Template page BDD
+* Template Post Type: page
+*/
 
 get_header();
 ?>

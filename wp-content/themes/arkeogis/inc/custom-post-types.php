@@ -35,7 +35,7 @@ function arkeogis_news() {
     'label'                 => __( 'Actualité', 'Arkeogis' ),
     'description'           => __( 'Actualités Arkeogis', 'Arkeogis' ),
     'labels'                => $labels,
-    'supports'              => array( 'title', 'thumbnail', 'custom-fields' ),
+    'supports'              => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
     'hierarchical'          => false,
     'public'                => true,
     'show_ui'               => true,

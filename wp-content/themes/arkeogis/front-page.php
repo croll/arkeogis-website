@@ -22,8 +22,8 @@ get_header();
 				<h1><?php pll_e("Cartographier,  conserver,  étudier, gérer…");?></h1>
 				<h2><?php pll_e("ArkeoGIS, partage et utilisation de données spatialisées sur le passé");?></h2>
 				<div class="button-container">
-					<a href="<?php the_permalink(pll_get_post(975));?>" target="_blank"><?php pll_e("Ouvrir l’application");?></a>
-					<a href="https://app.arkeogis.org/#/login"><?php pll_e("Créer un compte");?></a>
+					<a href="https://app.arkeogis.org/#/login" target="_blank"><?php pll_e("Ouvrir l’application");?></a>
+					<a href="<?php the_permalink(pll_get_post(975));?>"><?php pll_e("Créer un compte");?></a>
 				</div>
 			</div>
 			<div class="logos-container">

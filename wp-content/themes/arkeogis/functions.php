@@ -110,10 +110,11 @@ add_action( 'widgets_init', 'beve_widgets_init' );
  * Enqueue scripts and styles.
  */
 function beve_scripts() {
-	wp_enqueue_style( 'beve-style', get_template_directory_uri() . '/assets/style.min.css', array(), _S_VERSION);
+	wp_enqueue_style( 'bundle-style', get_template_directory_uri() . '/assets/bundle.css', array(), _S_VERSION);
+	wp_enqueue_style( 'css-style', get_template_directory_uri() . '/assets/style.css', array(), _S_VERSION);
 	wp_style_add_data( 'beve-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'beve-main', get_template_directory_uri() . '/assets/bundle.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'beve-main', get_template_directory_uri() . '/assets/bundle.js', array(), _S_VERSION, false );
 
 }
 add_action( 'wp_enqueue_scripts', 'beve_scripts' );

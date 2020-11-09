@@ -197,11 +197,38 @@ get_header();
 
 		<?php
 			$news = get_arkeogis_news(pll_current_language(), true);
-			print_r($news);
+			if (is_array($news) && sizeof($news) > 0):
 		?>
+		<script>
+			window.onload = function() {
+				Beve.newsSlider('.news-block .swiper-container');
+			}
+		</script>
 		<div class="news-block">
-			<h2><?php pll_e("Dernières <b>actualités</b>");?><h2>
+			<h2><?php pll_e("Dernières <b>actualités</b>");?></h2>
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<?php
+						foreach($news as $n):
+					?>
+						<div class="slide swiper-slide">
+							<div class="container">
+								<a href="<?php echo $n->url;?>" title="<?php echo $n->title;?>" data-id="<?php echo $n->id;?>">
+									<!-- <div class="img-container"> -->
+									<img src="<?php echo $n->image;?>" alt="<?php echo $n->title;?>" />
+									<!-- </div> -->
+									<div class="title"><?php echo $n->title;?></div>
+									<div class="date"><?php echo $n->date;?></div>
+								</a>
+							</div>
+						</div>
+					<?php
+						endforeach;
+					?>
+				</div>
+			</div>
 		</div>
+		<?php endif;?>
 
 	</main><!-- #main -->
 

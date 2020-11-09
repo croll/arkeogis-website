@@ -44,7 +44,7 @@ function get_arkeogis_news($lang, $home_only) {
     $r->url = get_permalink($post->ID);
     $r->content = $post->post_content;
     $date = $acfFields['news_date'];
-    if (preg_match("/([0-9]{4})([0-9]{2})([0-9]{2})/", $date, $m)) {
+    if (preg_match("/([0-9]{2})\/([0-9]{2})\/([0-9]{4})/", $date, $m)) {
       if ($lang === 'en') {
         $r->date = $m[1].'.'.$m[2].'.'.$m[3];
       } else {

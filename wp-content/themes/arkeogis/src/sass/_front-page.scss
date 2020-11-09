@@ -148,7 +148,7 @@ body.home {
       margin: 69px auto 0 auto;
       z-index: 200;
       max-width: calc(100vw - calc(var(--layout-padding) * 2));
-      max-height: calc(calc(100vw * 0.59 ) - calc(var(--layout-padding) * 2));
+      max-height: calc(calc(100vw * 0.59) - calc(var(--layout-padding) * 2));
       .dots-container {
         position: absolute;
         display: flex;
@@ -252,8 +252,6 @@ body.home {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        svg {
-        }
         .num {
           margin-top: 25px;
           font-weight: 300;
@@ -347,10 +345,61 @@ body.home {
   }
 
   .news-block {
+    padding-left: var(--layout-padding);
+    padding-right: var(--layout-padding);
+    max-width: var(--layout-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 89px;
+    padding-bottom: 150px;
     h2 {
       text-align: center;
       b {
         display: inline;
+      }
+    }
+    .swiper-container {
+      margin-top: 51px;
+      .swiper-wrapper {
+        display: flex;
+        justify-content: space-between;
+        .slide {
+          max-width: 419px;
+          .container {
+            a {
+              display: block;
+              width: 100%;
+              height: 100%;
+              img {
+                object-fit: cover;
+                width: 100%;
+                height: 229px;
+              }
+              .title {
+                font-weight: 600;
+                font-size: 20px;
+                margin-top: 20px;
+              }
+              .date {
+                position: relative;
+                font-size: 14px;
+                text-transform: normal;
+                margin-top: 25px;
+                color: #ccc;
+                &:after {
+                  position: absolute;
+                  top: 1px;
+                  right: 0;
+                  justify-self: flex-end;
+                  content: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.5576 6.46989L13.3898 0.418116C12.8216 -0.139372 11.8742 -0.139372 11.3059 0.418116C10.7377 0.975604 10.7377 1.90503 11.3059 2.46251L14.9474 6.05669H1.47369C0.652971 6.05669 0 6.69729 0 7.50246C0 8.30763 0.652971 8.94823 1.47369 8.94823H14.9474L11.3051 12.5215C10.7368 13.079 10.7368 14.0085 11.3051 14.5659C11.5995 14.8548 11.9786 15 12.3577 15C12.7369 15 13.116 14.8556 13.4104 14.5659L19.5576 8.53523C19.8314 8.26657 20 7.89463 20 7.50254C20 7.11045 19.8528 6.73851 19.5576 6.46985L19.5576 6.46989Z' fill='%23F4B511'/%3E%3C/svg%3E");
+                  width: 20px;
+                  height: 15px;
+                  display: block;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

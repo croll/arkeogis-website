@@ -1,7 +1,7 @@
 const path = require("path");
 require("babel-register");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const webpack = require('webpack');
 const config = {
   mode: "development",
   watch: true,
@@ -9,15 +9,16 @@ const config = {
   watchOptions: {
     ignored: ["node_modules/**"],
   },
-  entry: ["./app/index.js", "./sass/style.scss"],
+  entry: { bundle: "./app/index.js", style: "./sass/style.scss"},
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "style.min.css",
-      // chunkFilename: "[name].css",
+      // filename: "style.min.css",
+      filename: "[name].css",
+      chunkFilename: '[id].css'
     }),
   ],
   output: {
-    filename: "bundle.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "../assets"),
     libraryTarget: "var",
     library: "Beve",
@@ -36,7 +37,7 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader , "css-loader"],
       },
       {
         test: /\.s[a|c]ss$/,
@@ -46,6 +47,7 @@ const config = {
             loader: "css-loader",
             options: { url: false, sourceMap: true },
           },
+          // 'postcss-loader',
           "sass-loader",
         ],
       },

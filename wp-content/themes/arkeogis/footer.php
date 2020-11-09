@@ -43,6 +43,7 @@
 			<div class="legal">
 				<a href="<?php the_permalink(pll_get_post(428));?>"><?php pll_e("Mentions légales");?></a>
 				<a href="<?php the_permalink(pll_get_post(593));?>"><?php pll_e("Conditions générales d'utilisation");?></a>
+				<div class="croll">ArkeoGIS 2020 by Croll</div>
 			</div>
 		</div>
 	</footer><!-- #colophon -->

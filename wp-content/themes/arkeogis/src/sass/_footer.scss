@@ -129,11 +129,14 @@ footer.site-footer {
     right: var(--layout-padding);
     bottom: 30px;
     display: flex;
+    align-items: center;
     a {
-      max-width: auto;
-      &:last-child {
-        margin-left: 50px;
-      }
+      padding-right: 50px;
+    }
+    .croll {
+      font-size: 14px;
+      line-height: 18px;
+      color: #bbb;
     }
   }
 }

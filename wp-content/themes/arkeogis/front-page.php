@@ -46,7 +46,7 @@ get_header();
 					<div></div>
 				</div>
 				<video muted controls>
-					<source src="http://home.beve.org/wp-content/uploads/2020/11/arkeogis_demo.mp4" type="video/mp4">
+					<source src="/wp-content/uploads/2020/11/arkeogis_demo.mp4" type="video/mp4">
 				</video>
 			</div>
 			<div class="specs-container">

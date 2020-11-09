@@ -1,6 +1,4 @@
 <?php
-/* Template Name: Template page Utilisateurs */
-
 get_header();
 ?>
 
@@ -10,7 +8,7 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-      get_template_part( 'template-parts/content', 'users' );
+      get_template_part( 'template-parts/content', 'content' );
 
 		endwhile; // End of the loop.
 		?>

@@ -116,6 +116,8 @@ body.home {
     position: relative;
     padding-top: 158px;
     padding-bottom: 100px;
+    padding-left: var(--layout-padding);
+    padding-right: var(--layout-padding);
     .background {
       position: absolute;
       left: 0;
@@ -179,6 +181,8 @@ body.home {
       margin-top: 171px;
       margin-left: auto;
       margin-right: auto;
+      padding-left: var(--layout-padding);
+      padding-right: var(--layout-padding);
       grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
       z-index: 1;
       .spec {
@@ -227,9 +231,11 @@ body.home {
   }
 
   .stats-block {
-    background-color: #F2F2F2;
+    background-color: #f2f2f2;
     padding-top: 89px;
     padding-bottom: 100px;
+    padding-left: var(--layout-padding);
+    padding-right: var(--layout-padding);
     h2 {
       margin: 0;
       font-weight: 300;
@@ -268,6 +274,74 @@ body.home {
           color: #999999;
           font-weight: 600;
           text-align: center;
+        }
+      }
+    }
+  }
+
+  .databases-block {
+    padding-left: var(--layout-padding);
+    padding-right: var(--layout-padding);
+    padding-top: 89px;
+    padding-bottom: 100px;
+    h2 {
+      margin: 0;
+      font-weight: 300;
+      font-size: 34px;
+      line-height: 46px;
+      text-transform: uppercase;
+      b {
+        font-weight: 300;
+        color: var(--color-accent);
+      }
+    }
+    .toolbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .button {
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 18px;
+        position: relative;
+      }
+      .all {
+        border-radius: 1000px;
+        padding: 5px 20px 7px 21px;
+        border: 1px solid #cccccc;
+        box-sizing: border-box;
+        border-radius: 25px;
+        margin-right: 13px;
+      }
+      .search,
+      .inventory,
+      .work {
+        position: relative;
+        padding-right: 25px;
+        margin-left: 39px;
+        &:before {
+          top: 1px;
+          margin-left: -25px;
+          position: absolute;
+          content: "";
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+        }
+      }
+      .search {
+        &:before{
+          background-color: var(--color-search);
+        }
+      }
+      .inventory {
+        &:before{
+        background-color: var(--color-inventory);
+        }
+      }
+      .work {
+        &:before{
+        background-color: var(--color-work);
         }
       }
     }

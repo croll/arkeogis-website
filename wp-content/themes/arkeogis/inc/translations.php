@@ -29,3 +29,8 @@
   pll_register_string("chronologies", "Chronologies", 'Arkeogis', false);
   pll_register_string("nombre d'institutions", "Nombre d'institutions", 'Arkeogis (datas)', false);
   pll_register_string("institutions pluridisciplinaires", "Institutions pluridisciplinaires", 'Arkeogis', false);
+  pll_register_string("visualiser les données", "Visualiser les <b>données partagées</b>", 'Arkeogis', false);
+  pll_register_string("toutes les données", "Toutes les données", 'Arkeogis', false);
+  pll_register_string("recherche", "Recherche", 'Arkeogis', false);
+  pll_register_string("inventaire", "Inventaire", 'Arkeogis', false);
+  pll_register_string("ouvrage", "Ouvrage", 'Arkeogis', false);

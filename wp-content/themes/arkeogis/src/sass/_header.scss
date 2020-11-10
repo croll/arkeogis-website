@@ -15,6 +15,9 @@ header.site-header {
   z-index: 100;
 
   nav.main-navigation {
+    @include up-to-large-screen {
+      display: none;
+    }
     a {
       text-transform: uppercase;
       text-decoration: none;

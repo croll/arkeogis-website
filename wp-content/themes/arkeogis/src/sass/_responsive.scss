@@ -5,7 +5,7 @@
   }
 }
 
-@mixin from-small-screen {
+@mixin from-xs-screen {
   @media only screen and (min-width: 321px) {
     @content;
   }
@@ -16,20 +16,27 @@
     @content;
   }
 }
-@mixin up-to-medium-screen {
+
+@mixin up-to-small-screen {
   @media only screen and (max-width: 600px) {
     @content;
   }
 }
 
 @mixin from-medium-screen {
-  @media only screen and (min-width: 601px) {
+  @media only screen and (min-width: 801px) {
     @content;
   }
 }
 
-@mixin for-medium-screen {
-  @media only screen and (min-width: 601px) and (max-width: 1024px) {
+@mixin up-to-medium-screen {
+  @media only screen and (max-width: 800px) {
+    @content;
+  }
+}
+
+@mixin for-large-screen {
+  @media only screen and (min-width: 801px) and (max-width: 1024px) {
     @content;
   }
 }

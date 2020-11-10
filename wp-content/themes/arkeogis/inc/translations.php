@@ -3,6 +3,7 @@
   pll_register_string("partage et utilisation", "ArkeoGIS, partage et utilisation de données spatialisées sur le passé", 'Arkeogis', false);
   pll_register_string("ouvrir application", "Ouvrir l’application", 'Arkeogis', false);
   pll_register_string("ouvrir un compte", "Créer un compte", 'Arkeogis', false);
+  pll_register_string("tous les partenaires", "Tous les partenaires", 'Arkeogis', false);
   pll_register_string("plateforme de données", "Plateforme de publication <b>de données scientifiques unifiées</b>", 'Arkeogis', false);
   pll_register_string("importation qualifiée", "Importation  Qualifiée", 'Arkeogis', false);
   pll_register_string("importer vos données", "Importer vos données guidé par l’assistance à la correction en ligne, ajouter les méta-données (DublinCore) et obtenir des données inter-opérable.", 'Arkeogis', true);

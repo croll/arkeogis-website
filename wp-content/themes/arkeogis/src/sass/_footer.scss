@@ -3,6 +3,9 @@ footer.site-footer {
   padding-top: 80px;
   padding-bottom: 80px;
   position: relative;
+  @include up-to-medium-screen {
+    padding-bottom: 40px;
+  }
   .container {
     display: grid;
     grid-template-columns: fit-content(50%) 1fr 1fr;
@@ -16,9 +19,10 @@ footer.site-footer {
     @include for-large-screen {
       grid-template-rows: 80px 1fr;
       grid-template-columns: 1fr 1fr;
+      margin-bottom: 0px;
     }
     @include up-to-medium-screen {
-      grid-template-rows: 80px 1fr 1fr;
+      grid-template-rows: fit-content 1fr fit-content;
       grid-template-columns: 1fr;
     }
     li {
@@ -61,6 +65,12 @@ footer.site-footer {
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 80px;
+        @include up-to-medium-screen {
+          grid-row: 2;
+          grid-column: 1;
+          column-gap: 50px;
+          row-gap: 30px;
+        }
         // Top level links
         & > li.toplevel {
           &:first-child {
@@ -98,9 +108,11 @@ footer.site-footer {
             grid-row: 2;
           }
           a {
+
             font-weight: bold;
             font-size: 16px;
             line-height: 22px;
+            white-space: nowrap;
           }
         }
         & > li:nth-child(4) {
@@ -115,6 +127,7 @@ footer.site-footer {
             font-weight: bold;
             font-size: 16px;
             line-height: 22px;
+            white-space: nowrap;
           }
         }
         & > li:nth-child(5) {
@@ -129,6 +142,7 @@ footer.site-footer {
             font-weight: bold;
             font-size: 16px;
             line-height: 22px;
+            white-space: nowrap;
           }
         }
       }
@@ -143,9 +157,9 @@ footer.site-footer {
       grid-column: 2;
     }
     @include up-to-medium-screen {
-      margin-top: 40px;
       grid-row: 3;
       grid-column: 1;
+      margin-top: 60px;
     }
     // @include from-medium-screen {
     //   grid-row: 1;
@@ -186,13 +200,24 @@ footer.site-footer {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    @include up-to-medium-screen {
+      position: relative;
+      bottom: 0;
+      margin-top: 100px;
+      padding-left: var(--layout-padding);
+      padding-right: var(--layout-padding);
+      align-items: flex-end;
+    }
     a {
-      padding-right: 50px;
+      margin-right: 50px;
+      height: 50px;
+      padding: 0;
     }
     .croll {
       font-size: 14px;
       line-height: 18px;
       color: #bbb;
+      height: 50px;
     }
   }
 }

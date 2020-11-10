@@ -1,11 +1,14 @@
 :root {
   --color-primary: black;
   --color-secondary: white;
-  --color-accent: #F4B511;
-  --color-search: #F59203;
-  --color-inventory: #A46DBE;
-  --color-work: #8CB044;
+  --color-accent: #f4b511;
+  --color-search: #f59203;
+  --color-inventory: #a46dbe;
+  --color-work: #8cb044;
   --layout-width: 1440px;
   --layout-padding: 50px;
   --menu-height: 120px;
+  @include up-to-medium-screen {
+    --layout-padding: 30px;
+  }
 }

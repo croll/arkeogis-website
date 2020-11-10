@@ -7,9 +7,6 @@ body.home {
     background-position: center;
     background-image: url("../../../uploads/2020/11/arkeogis-header.jpg");
     background-size: cover;
-    @include for-xs-screen {
-      min-height: 200vh;
-    }
     .main-container {
       padding-left: var(--layout-padding);
       padding-right: var(--layout-padding);
@@ -20,10 +17,15 @@ body.home {
       width: 100%;
       display: flex;
       flex-direction: column;
-      @include for-xs-screen {
-        transform: translate(-50%, -80%);
+      @include up-to-medium-screen {
+        position: relative;
+        margin-top: 150px;
       }
       & > h1 {
+        @include up-to-medium-screen {
+          position: relative;
+          margin-top: 270px;
+        }
         margin: 0;
         font-weight: 600;
         font-size: 46px;
@@ -63,6 +65,9 @@ body.home {
           color: var(--color-secondary);
           min-width: 240px;
           text-align: center;
+          @include up-to-medium-screen {
+            width: 100%;
+          }
         }
         a:first-child {
           border: 1px solid #fff;
@@ -80,14 +85,13 @@ body.home {
           border-radius: 1000px;
           padding: 20px 35px;
           margin-left: 51px;
-          @include up-to-medium-screen {
-            font-size: 7vw;
-            line-height: 7vw;
-            margin-left: 0;
-          }
           &:hover {
             border: 1px solid #fff;
             background-color: #fff;
+          }
+          @include up-to-medium-screen {
+            margin-top: 30px;
+            margin-left: 0;
           }
         }
       }
@@ -110,6 +114,10 @@ body.home {
       background-color: #fff;
       border-radius: 20px;
       padding-bottom: 20px;
+      @include up-to-medium-screen {
+        margin-top: -230px;
+        position: relative;
+      }
       img {
         margin-top: 18px;
         margin-bottom: 20px;
@@ -234,6 +242,10 @@ body.home {
       padding-right: var(--layout-padding);
       grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
       z-index: 1;
+      @include up-to-medium-screen {
+        padding-left: 0;
+        padding-right: 0;
+      }
       .spec {
         max-width: 268px;
         h3 {
@@ -297,6 +309,11 @@ body.home {
       max-width: var(--layout-width);
       margin-left: auto;
       margin-right: auto;
+      row-gap: 70px;
+      column-gap: 50px;
+      @include up-to-medium-screen {
+        row-gap: 70px;
+      }
       .stat {
         display: flex;
         flex-direction: column;
@@ -329,6 +346,10 @@ body.home {
     margin-right: auto;
     padding-top: 89px;
     padding-bottom: 100px;
+    @include up-to-medium-screen {
+      padding-top: 49px;
+      padding-bottom: 0px;
+    }
     .app {
       position: relative;
       background: #2e3338;
@@ -337,19 +358,29 @@ body.home {
       width: 1320px;
       height: 560px;
       max-width: calc(100vw - calc(var(--layout-padding) * 2));
-      margin-top: 50px;
+      margin-top: 70px;
+      @include up-to-medium-screen {
+        margin-top: 130px;
+      }
       .toolbar {
         position: absolute;
-        top: -53px;
+        top: -50px;
         right: -20px;
         display: flex;
         justify-content: flex-end;
         align-items: center;
+        @include up-to-medium-screen {
+          top: -80px;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+        }
         .button {
           font-weight: 600;
           font-size: 13px;
           line-height: 18px;
           position: relative;
+          white-space: nowrap;
+          text-align: center;
         }
         .all {
           border-radius: 1000px;
@@ -358,6 +389,11 @@ body.home {
           box-sizing: border-box;
           border-radius: 25px;
           margin-right: 13px;
+          @include up-to-medium-screen {
+            margin-right: 20px;
+            flex: 1 1 100%;
+            margin-top: -5px;
+          }
         }
         .search,
         .inventory,
@@ -365,6 +401,11 @@ body.home {
           position: relative;
           padding-right: 25px;
           margin-left: 39px;
+          @include up-to-medium-screen {
+            margin-left: calc(var(--layout-padding) - 5px);
+            margin-top: 17px;
+            flex: 0 0 auto;
+          }
           &:before {
             top: 1px;
             margin-left: -25px;
@@ -373,6 +414,9 @@ body.home {
             width: 16px;
             height: 16px;
             border-radius: 50%;
+            @include up-to-medium-screen {
+              margin-left: -20px;
+            }
           }
         }
         .search {

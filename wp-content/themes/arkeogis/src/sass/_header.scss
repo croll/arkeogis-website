@@ -196,7 +196,7 @@ header.site-header {
         }
       }
       @include up-to-large-screen {
-        padding: 8px 20px 8px 20px;
+        padding: 8px 20px 9px 20px;
         font-size: 14px;
         color: var(--color-accent);
       }
@@ -215,6 +215,7 @@ header.site-header {
         @include up-to-large-screen {
           visibility: visible;
           opacity: 1;
+          padding: 10px 20px;
         }
         a {
           font-weight: bold;

@@ -16,7 +16,7 @@ export default class arkeogis {
       tl.to(lines[0], { rotation: 45 });
       tl.to(lines[2], { rotation: -45 }, "<");
       tl.to("#site-navigation", { x: 0 }, 0);
-      tl.to(".language-switcher", {display: "block", autoAlpha: 1}, 0.1);
+      tl.to(".language-switcher", { display: "block", autoAlpha: 1 }, 0.1);
       burger.addEventListener("click", () => {
         if (menuVisible) {
           tl.reverse();

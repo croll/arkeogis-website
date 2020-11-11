@@ -37,6 +37,7 @@ header.site-header {
       font-weight: bold;
       color: var(--color-secondary);
       text-align: left;
+      padding-top: 50px;
       &:hover {
         color: var(--color-accent);
       }
@@ -44,7 +45,6 @@ header.site-header {
     & > div {
       /* Main container */
       ul#primary-menu {
-        padding-top: 70px;
         & > li {
           /* First level */
           & > a {
@@ -98,10 +98,10 @@ header.site-header {
       left: 0;
       width: 100%;
       min-height: 100vh;
-      padding-top: 20px;
       background-color: #000;
       opacity: 0.9;
       transform: translateX(100%);
+      padding-top: 70px;
       ul#primary-menu {
         display: flex;
         flex-direction: column;

@@ -27,10 +27,20 @@ h6 {
     color: var(--color-accent);
   }
 }
-
 h2 {
-  font-size: 34px;
+  font-size: 26px;
   line-height: 46px;
+}
+h3 {
+  font-size: 30px;
+  line-height: 46px;
+}
+h4 {
+  line-height: 28px;
+}
+
+p {
+  line-height: 24px;
 }
 
 .dataTables_wrapper {
@@ -82,6 +92,8 @@ h2 {
         padding-right: 20px;
         min-width: 200px;
         font-size: 14px;
+        vertical-align: middle;
+        line-height: 22px;
       }
       strong,
       .column-1 {
@@ -90,7 +102,6 @@ h2 {
         font-weight: 600;
         padding-left: 30px !important;
         &:before {
-          content: "➕" !important;
           top: 22px!important;
           background-color: unset !important;
           color: #000 !important;

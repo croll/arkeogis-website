@@ -67,7 +67,3 @@
 	<?php if (!is_home()): ?>
 		<div class="header-background"></div>
 	<?php endif;?>
-
-	<script>
-		const arkeo = Beve.arkeogis.initMobileMenu();
-	</script>

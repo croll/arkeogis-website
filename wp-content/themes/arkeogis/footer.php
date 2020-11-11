@@ -51,5 +51,9 @@
 
 <?php wp_footer(); ?>
 
+<script>
+	const arkeo = Beve.arkeogis.initMobileMenu();
+</script>
+
 </body>
 </html>

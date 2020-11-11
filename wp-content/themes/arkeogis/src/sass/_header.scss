@@ -80,8 +80,8 @@ header.site-header {
             margin-left: 25px;
             a {
               display: block;
-              padding-top: 8px;
-              padding-bottom: 8px;
+              padding-top: 10px;
+              padding-bottom: 10px;
               white-space: nowrap;
               &:hover {
                 color: var(--color-accent);
@@ -162,6 +162,14 @@ header.site-header {
     font-size: 15px;
     width: 30px;
     @include up-to-large-screen {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      bottom: 20px;
+      right: 37px;
+      z-index: 1;
+      visibility: hidden;
+      opacity: 0;
       display: none;
     }
     & > button {
@@ -183,16 +191,31 @@ header.site-header {
         left: 50%;
         bottom: 0;
         transform: translate(-50%, -5px);
+        @include up-to-large-screen {
+          display: none;
+        }
+      }
+      @include up-to-large-screen {
+        padding: 8px 20px 8px 20px;
+        font-size: 14px;
+        color: var(--color-accent);
       }
     }
     & > ul {
       position: absolute;
       list-style: none;
       width: auto;
+      @include up-to-large-screen {
+        position: relative;
+      }
       li {
         padding: 8px 20px;
         visibility: hidden;
         opacity: 0;
+        @include up-to-large-screen {
+          visibility: visible;
+          opacity: 1;
+        }
         a {
           font-weight: bold;
           outline: none;

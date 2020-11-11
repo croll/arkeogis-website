@@ -233,9 +233,5 @@ get_header();
 
 	</main><!-- #main -->
 
-	<script>
-		const arkeo = Beve.arkeogis.initMobileMenu();
-	</script>
-
 <?php
 get_footer();

@@ -15,11 +15,5 @@ get_header();
 
 	</main><!-- #main -->
 
-	<script>
-		window.onload = function() {
-			Beve.usersMap('#usersMap', '<?php echo pll_current_language();?>');
-		};
-	</script>
-
 <?php
 get_footer();

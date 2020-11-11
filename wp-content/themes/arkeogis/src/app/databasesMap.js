@@ -105,8 +105,6 @@ const orderData = (data) => {
       b: DB_TYPES[d[10]][2],
     };
 
-    console.log(properties.isIndeterminate);
-
     // Parse geojson geometry
     let geometry;
     if (d[13] !== "") {

@@ -21,9 +21,5 @@ get_sidebar();
 
 	</main><!-- #main -->
 
-	<script>
-		usersMap();
-	</script>
-
 <?php
 get_footer();

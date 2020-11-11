@@ -13,11 +13,22 @@ header.site-header {
   padding-left: 50px;
   padding-right: 50px;
   z-index: 100;
+  @include up-to-large-screen {
+    position: fixed;
+    transform: none;
+    left: 0;
+  }
 
-  nav.main-navigation {
+  .logo {
     @include up-to-large-screen {
-      display: none;
+      position: absolute;
+      left: var(--layout-padding);
+      margin-left: 0;
+      z-index: 100;
     }
+  }
+
+  nav#site-navigation {
     a {
       text-transform: uppercase;
       text-decoration: none;
@@ -33,6 +44,7 @@ header.site-header {
     & > div {
       /* Main container */
       ul#primary-menu {
+        padding-top: 70px;
         & > li {
           /* First level */
           & > a {
@@ -70,6 +82,67 @@ header.site-header {
               display: block;
               padding-top: 8px;
               padding-bottom: 8px;
+              white-space: nowrap;
+              &:hover {
+                color: var(--color-accent);
+              }
+            }
+          }
+        }
+      }
+    }
+    @include up-to-large-screen {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100vh;
+      padding-top: 20px;
+      background-color: #000;
+      opacity: 0.9;
+      ul#primary-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        height: 100vh;
+        & > li {
+          /* First level */
+          & > a {
+            /* Links of first level */
+            padding: 40px 25px;
+          }
+          &.toplevel {
+            padding-top: 20px;
+            & > a {
+              font-size: 1.5rem;
+              padding-bottom: 8px;
+              position: relative;
+              &:after {
+                display: none;
+              }
+            }
+          }
+          &:not(.toplevel) {
+            & > a {
+              padding-top: 8px;
+              padding-bottom: 15px;
+            }
+          }
+          &:nth-child(3) {
+            margin-top: 30px;
+          }
+          /* Second level */
+          ul.sub-menu {
+            position: relative !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            a {
+              display: block;
+              padding-top: 10px;
+              padding-bottom: 11px;
               white-space: nowrap;
               &:hover {
                 color: var(--color-accent);
@@ -155,6 +228,9 @@ header.site-header {
     cursor: pointer;
     @include up-to-large-screen {
       display: block;
+      position: absolute;
+      right: var(--layout-padding);
+      margin-right: 0;
     }
     path {
       fill: var(--color-secondary);

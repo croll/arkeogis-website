@@ -101,6 +101,7 @@ header.site-header {
       padding-top: 20px;
       background-color: #000;
       opacity: 0.9;
+      transform: translateX(100%);
       ul#primary-menu {
         display: flex;
         flex-direction: column;
@@ -220,12 +221,20 @@ header.site-header {
   }
 
   .burger-icon {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 16px;
     display: none;
     z-index: 3;
     margin-right: 30px;
     cursor: pointer;
+    .burger-lines {
+      width: 24px;
+      height: 18px;
+      path {
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+    }
     @include up-to-large-screen {
       display: block;
       position: absolute;

@@ -3,7 +3,7 @@ import gsap from "gsap";
 export default class arkeogis {
   static initMobileMenu() {
     let menuVisible = false;
-    window.onload = function () {
+    document.addEventListener("load", function() {
       const burger = document.querySelector(".burger-icon");
       const lines = burger.querySelectorAll(".burger-lines path");
       const tl = gsap.timeline({
@@ -25,6 +25,6 @@ export default class arkeogis {
         }
         menuVisible = !menuVisible;
       });
-    };
+    });
   }
 }

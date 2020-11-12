@@ -193,17 +193,24 @@ get_header();
 					<div class="button inventory" data-set="inventory"><?php pll_e("Inventaire");?></div>
 					<div class="button work" data-set="work"><?php pll_e("Ouvrage");?></div>
 				</div>
+				<div id="databasesMap"></div>
 			</div>
 		</div>
+		<script>
+			window.addEventListener("load", function() {
+				var dbMap = new Beve.databasesMap("#databasesMap");
+				dbMap.init("#databasesMap", "<?php echo pll_current_language() ?>");
+			});
+		</script>
 
 		<?php
 			$news = get_arkeogis_news(pll_current_language(), true);
 			if (is_array($news) && sizeof($news) > 0):
 		?>
 		<script>
-			window.onload = function() {
+			window.addEventListener("load", function() {
 				Beve.newsSlider('.news-block .swiper-container');
-			}
+			});
 		</script>
 		<div class="news-block">
 			<h2><?php pll_e("Dernières <b>actualités</b>");?></h2>

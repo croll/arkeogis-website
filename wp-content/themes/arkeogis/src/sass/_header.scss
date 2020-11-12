@@ -92,7 +92,7 @@ header.site-header {
       }
     }
     @include up-to-large-screen {
-      position: fixed;
+        position: fixed;
       display: block;
       top: 0;
       left: 0;

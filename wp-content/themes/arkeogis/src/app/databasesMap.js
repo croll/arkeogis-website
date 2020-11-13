@@ -3,12 +3,17 @@ import * as Papa from "papaparse";
 import mapboxgl from "mapbox-gl";
 import area from "@turf/area";
 import gsap from "gsap";
+import Draggable from "gsap/Draggable";
+
+gsap.registerPlugin(Draggable);
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiY2hyaXNiZXZlIiwiYSI6ImNrZ3FxZmc2aDA3amgyeHF3eW45YWNvYWcifQ.9NQUkCisnXuiWYAOBmJMvw";
 
 export default class databasesMap {
   constructor() {
+    this.DATE_MIN = -6000;
+    this.DATE_MAX = 2020;
     this.NUMBER_OF_CELS = 17;
     this.DB_TYPES = {
       search: { rgb: [110, 145, 247], hex: "f59203" },
@@ -184,13 +189,97 @@ export default class databasesMap {
     return featureCollection;
   }
 
+  filterByDate() {
+    const dateSlider = document.querySelector(".dateSlider");
+    const timelineWidth = dateSlider.getBoundingClientRect().width - 20; //padding
+    const dateMin = Math.round(
+      gsap.utils.mapRange(
+        0,
+        timelineWidth,
+        this.DATE_MIN,
+        this.DATE_MAX,
+        this.drag1[0].x
+      )
+    );
+    const dateMax = Math.round(
+      gsap.utils.mapRange(
+        0,
+        timelineWidth,
+        this.DATE_MIN,
+        this.DATE_MAX,
+        timelineWidth + this.drag2[0].x
+      )
+    );
+    // Set the filter
+    this.map.setFilter("bdd-lines", [">=", "startDate", dateMax]);
+    this.map.setFilter("bdd-lines", ["<=", "endDate", dateMax]);
+    // Update labels
+    const startContainer = dateSlider.querySelector(".start");
+    const endContainer = dateSlider.querySelector(".end");
+    gsap.to(startContainer, { x: this.drag1[0].x });
+    gsap.to(endContainer, { x: this.drag2[0].x });
+    if (this.drag1[0].x > 0) {
+      const xPercent1 =
+        this.drag1[0].x < startContainer.getBoundingClientRect().width
+          ? 0
+          : -120;
+      gsap.set(startContainer.querySelector(".year"), {
+        innerHTML: dateMin,
+        xPercent: xPercent1,
+      });
+    } else {
+      gsap.set(startContainer.querySelector(".year"), {
+        innerHTML: dateMin,
+        xPercent: 0,
+      });
+    }
+    if (this.drag2[0].x < 0) {
+      const xPercent2 =
+        this.drag2[0].x == 0 || timelineWidth < timelineWidth + this.drag2[0].x
+          ? 0
+          : 120;
+      gsap.set(endContainer.querySelector(".year"), {
+        innerHTML: dateMax,
+        xPercent: xPercent2,
+      });
+    } else {
+      gsap.set(endContainer.querySelector(".year"), {
+        innerHTML: dateMax,
+        xPercent: 0,
+      });
+    }
+  }
+
+  initKnobs() {
+    const dateSlider = document.querySelector(".dateSlider");
+    const knob1 = dateSlider.querySelector(".knob1");
+    const knob2 = dateSlider.querySelector(".knob2");
+    this.drag1 = Draggable.create(knob1, {
+      type: "x",
+      bounds: document.querySelector(".dateSlider"),
+      onDragEnd: () => {
+        this.filterByDate();
+      },
+    });
+    this.drag2 = Draggable.create(knob2, {
+      type: "x",
+      bounds: document.querySelector(".dateSlider"),
+      onDragEnd: () => {
+        this.filterByDate();
+      },
+    });
+  }
+
   async init(selector, lang) {
+    this.initKnobs();
+
+    // Init draggable
     let datas = await this.fetchDatas(lang);
 
     // Order datas
     datas = this.orderData(datas, lang);
 
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: document.querySelector(selector),
       center: [7.7521113, 48.5734053],
       zoom: 3,
@@ -199,12 +288,16 @@ export default class databasesMap {
       style: "mapbox://styles/mapbox/dark-v10",
       // style: "mapbox://styles/arkeofi/ckh55i3iv056d19p7id6sod6b",
       antialias: true,
+      attributionControl: false,
     });
+
+    // Attribution
+    this.map.addControl(new mapboxgl.AttributionControl(), "top-right");
 
     let geoDatas = this.toGeojson(datas);
 
-    map.on("load", () => {
-      map.addSource("bdd", {
+    this.map.on("load", () => {
+      this.map.addSource("bdd", {
         type: "geojson",
         data: geoDatas,
         generateId: true,
@@ -214,9 +307,9 @@ export default class databasesMap {
       for (let type in this.DB_TYPES) {
         const img = new Image(14, 14);
         img.onload = () => {
-          map.addImage(`stripes-${type}`, img);
+          this.map.addImage(`stripes-${type}`, img);
           if (i === 2) {
-            map.addLayer({
+            this.map.addLayer({
               id: "bdd-polygons",
               type: "fill",
               source: "bdd",
@@ -224,7 +317,7 @@ export default class databasesMap {
                 "fill-color": "transparent",
               },
             });
-            map.addLayer({
+            this.map.addLayer({
               id: "bdd-lines",
               type: "line",
               source: "bdd",
@@ -240,27 +333,25 @@ export default class databasesMap {
               },
             });
 
-            map.on("mouseover", "bdd-lines", (e) => {
-              var features = map.queryRenderedFeatures(e.point, {
+            this.map.on("mouseover", "bdd-lines", (e) => {
+              var features = this.map.queryRenderedFeatures(e.point, {
                 layers: ["bdd-lines"],
               });
-
-              console.log("ICI");
 
               console.log(features);
               if (features.length) {
                 setTimeout(() => {
                   this.hoveredStateId = features[0].properties.name;
-                  map.setFeatureState(
+                  this.map.setFeatureState(
                     { source: "bdd", id: this.hoveredStateId },
                     { hover: true }
                   );
-                  map.setPaintProperty(
+                  this.map.setPaintProperty(
                     "bdd-polygons",
                     "fill-pattern",
                     features[0].properties.stripes
                   );
-                  map.setFilter("bdd-polygons", [
+                  this.map.setFilter("bdd-polygons", [
                     "==",
                     "name",
                     this.hoveredStateId,

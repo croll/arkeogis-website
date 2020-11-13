@@ -194,6 +194,27 @@ get_header();
 					<div class="button work" data-set="work"><?php pll_e("Ouvrage");?></div>
 				</div>
 				<div id="databasesMap"></div>
+				<div class="dateSlider">
+					<div class="year-container start"><div class="year">-6000</div><!--<label><?php pll_e("av. JC");?></label>--></div>
+					<div class="year-container end"><div class="year">2020</div><!--<label><?php pll_e("ap. JC");?></label>--></div>
+					<div class="knob knob1">
+						<svg width="16" height="26" viewBox="0 0 16 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M13.7198 -8.74228e-08C14.8244 -3.91405e-08 15.7198 0.895431 15.7198 2L15.7198 17.0925C15.7198 17.6119 15.5178 18.1109 15.1564 18.484L9.30977 24.52C8.52502 25.3301 7.22594 25.3315 6.43952 24.5229L0.566305 18.4845C0.203166 18.1112 -6.49184e-06 17.6109 -6.46908e-06 17.0901L-5.80947e-06 2C-5.76119e-06 0.895432 0.895425 -6.47996e-07 1.99999 -5.99714e-07L13.7198 -8.74228e-08Z" fill="white"/>
+							<line x1="5.36005" y1="6" x2="5.36005" y2="15" stroke="#CCCCCC"/>
+							<line x1="10.36" y1="6" x2="10.36" y2="15" stroke="#CCCCCC"/>
+						</svg>
+					</div>
+					<div class="knob knob2">
+						<svg width="16" height="26" viewBox="0 0 16 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M13.7198 -8.74228e-08C14.8244 -3.91405e-08 15.7198 0.895431 15.7198 2L15.7198 17.0925C15.7198 17.6119 15.5178 18.1109 15.1564 18.484L9.30977 24.52C8.52502 25.3301 7.22594 25.3315 6.43952 24.5229L0.566305 18.4845C0.203166 18.1112 -6.49184e-06 17.6109 -6.46908e-06 17.0901L-5.80947e-06 2C-5.76119e-06 0.895432 0.895425 -6.47996e-07 1.99999 -5.99714e-07L13.7198 -8.74228e-08Z" fill="white"/> <line x1="5.36005" y1="6" x2="5.36005" y2="15" stroke="#CCCCCC"/>
+							<line x1="10.36" y1="6" x2="10.36" y2="15" stroke="#CCCCCC"/>
+						</svg>
+					</div>
+					<div class="hightlight">
+						<div class="date date1">- 300</div>
+						<div class="date date2">1400</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<script>

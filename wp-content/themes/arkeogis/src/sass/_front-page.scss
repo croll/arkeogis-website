@@ -352,8 +352,9 @@ body.home {
     }
     .app {
       position: relative;
-      background: #2e3338;
-      opacity: 0.8;
+      // background: #2e3338;
+      background: #191a1a;
+      // opacity: 0.8;
       border-radius: 20px;
       width: 1320px;
       height: 560px;
@@ -364,7 +365,7 @@ body.home {
       }
       .toolbar {
         position: absolute;
-        top: -50px;
+        top: -40px;
         right: -20px;
         display: flex;
         justify-content: flex-end;
@@ -381,6 +382,7 @@ body.home {
           position: relative;
           white-space: nowrap;
           text-align: center;
+          cursor: pointer;
         }
         .all {
           border-radius: 1000px;
@@ -432,6 +434,77 @@ body.home {
         .work {
           &:before {
             background-color: var(--color-work);
+          }
+        }
+      }
+      .dateSlider {
+        position: absolute;
+        left: 30px;
+        width: calc(100% - 60px);
+        height: 25px;
+        bottom: 30px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 12.5px;
+        z-index: 10;
+        .year-container {
+          position: absolute;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 16px;
+          color: #fff;
+          top: 5px;
+          flex: 0 0 auto;
+          white-space: nowrap;
+          display: block;
+          display: flex;
+          label {
+            margin-left: 5px;
+          }
+          &.start {
+            left: 12px;
+          }
+          &.end {
+            right: 12px;
+          }
+        }
+        .knob {
+          width: 16px;
+          height: 26px;
+          position: absolute;
+          top: -26px;
+          line-height: 16px;
+          display: flex;
+          &.knob1 {
+            line-height: 16px;
+            display: flex;
+            left: 0;
+            }
+          &.knob2 {
+            right: 0px;
+          }
+        }
+        .hightlight {
+          position: absolute;
+          top: 4px;
+          left: 50px;
+          right: 200px;
+          height: 17px;
+          display: flex;
+          justify-content: space-between;
+          padding: 2px;
+          background-color: #8cb044;
+          opacity: 0;
+          visibility: hidden;
+          .date {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 16px;
+            color: #fff;
+            flex: 0 0 auto;
+            .date1 {
+            }
+            .date2 {
+            }
           }
         }
       }

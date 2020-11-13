@@ -16,10 +16,12 @@ export default class databasesMap {
     this.DATE_MAX = 2020;
     this.NUMBER_OF_CELS = 17;
     this.DB_TYPES = {
-      search: { rgb: [110, 145, 247], hex: "f59203" },
-      inventory: { rgb: [155, 255, 0], hex: "a46dbe" },
-      work: { rgb: [253, 109, 101], hex: "8cb044" },
+      search: { rgb: [253, 109, 101], hex: "8cb044" },
+      inventory: { rgb: [164, 109, 190], hex: "a46dbe" },
+      work: { rgb: [140, 176, 68], hex: "8cb044" },
     };
+    this.activeFilters = ["search", "work", "inventory"];
+    this.dateFilter = [this.DATE_MIN, this.DATE_MAX];
 
     this.translations = {
       search: {
@@ -210,9 +212,10 @@ export default class databasesMap {
         timelineWidth + this.drag2[0].x
       )
     );
-    // Set the filter
-    this.map.setFilter("bdd-lines", [">=", "startDate", dateMax]);
-    this.map.setFilter("bdd-lines", ["<=", "endDate", dateMax]);
+    // Update filters
+    this.dateFilter = [dateMin, dateMax];
+    this.applyFilters();
+
     // Update labels
     const startContainer = dateSlider.querySelector(".start");
     const endContainer = dateSlider.querySelector(".end");
@@ -250,6 +253,63 @@ export default class databasesMap {
     }
   }
 
+  filterByType(type) {
+    const toolbar = document.querySelector(".app .toolbar");
+    if (this.activeFilters.includes(type)) {
+      this.activeFilters = this.activeFilters.filter((val) => val !== type);
+      gsap.to(toolbar.querySelector(`[data-set="${type}"]`), { opacity: 0.5 });
+    } else {
+      this.activeFilters.push(type);
+      gsap.to(toolbar.querySelector(`[data-set="${type}"]`), { opacity: 1 });
+    }
+    this.applyFilters();
+    // Button all
+    // gsap.to(toolbar.querySelector(`[data-set="all"]`), { opacity: this.activeFilters.length == 3 ? 0.5 : 1});
+  }
+
+  resetFilters() {
+    this.activeFilters = ["search", "work", "inventory"];
+    gsap.to(document.querySelectorAll(`.app .button`), { opacity: 1 });
+    this.applyFilters();
+  }
+
+  applyFilters() {
+    this.map.setFilter("bdd-lines", [
+      "all",
+      ["match", ["get", "type"], this.activeFilters, true, false],
+      // [">=", ["get", "startDate"], this.dateFilter[0]],
+      [
+        "any",
+        [">=", ["get", "startDate"], this.dateFilter[0]],
+        ["==", ["get", "startDate"], "indéterminé"],
+      ],
+      [
+        "any",
+        ["<=", ["get", "endDate"], this.dateFilter[1]],
+        ["==", ["get", "endDate"], "indéterminé"],
+      ],
+      ["==", ["get", "isIndeterminate"], false],
+    ]);
+    console.log(`'${this.activeFilters.join("','")}'`);
+  }
+
+  initFilters() {
+    const toolbar = document.querySelector(".app .toolbar");
+    // Buttons colored
+    toolbar.addEventListener("click", (e) => {
+      const type = e.target.getAttribute("data-set");
+      if (type === null) {
+        return;
+      }
+      if (type === "all") {
+        this.resetFilters();
+      } else {
+        this.filterByType(type);
+      }
+    });
+    // Button "all"
+  }
+
   initKnobs() {
     const dateSlider = document.querySelector(".dateSlider");
     const knob1 = dateSlider.querySelector(".knob1");
@@ -272,6 +332,7 @@ export default class databasesMap {
 
   async init(selector, lang) {
     this.initKnobs();
+    this.initFilters();
 
     // Init draggable
     let datas = await this.fetchDatas(lang);
@@ -333,32 +394,43 @@ export default class databasesMap {
               },
             });
 
+            this.map.setFilter("bdd-lines", [
+              "==",
+              ["get", "isIndeterminate"],
+              false,
+            ]);
+
             this.map.on("mouseover", "bdd-lines", (e) => {
               var features = this.map.queryRenderedFeatures(e.point, {
                 layers: ["bdd-lines"],
               });
-
-              console.log(features);
               if (features.length) {
-                setTimeout(() => {
-                  this.hoveredStateId = features[0].properties.name;
-                  this.map.setFeatureState(
-                    { source: "bdd", id: this.hoveredStateId },
-                    { hover: true }
-                  );
-                  this.map.setPaintProperty(
-                    "bdd-polygons",
-                    "fill-pattern",
-                    features[0].properties.stripes
-                  );
-                  this.map.setFilter("bdd-polygons", [
-                    "==",
-                    "name",
-                    this.hoveredStateId,
-                  ]);
-                }, 100);
+                this.hoveredStateId = features[0].properties.name;
+                this.map.setFeatureState(
+                  { source: "bdd", id: this.hoveredStateId },
+                  { hover: true }
+                );
+                this.map.setPaintProperty(
+                  "bdd-polygons",
+                  "fill-pattern",
+                  features[0].properties.stripes
+                );
+                this.map.setFilter("bdd-polygons", [
+                  "==",
+                  "name",
+                  this.hoveredStateId,
+                ]);
               }
             });
+
+            // this.map.on("mouseleave", "bdd-polygons", (e) => {
+            //   console.log("ICI");
+            //     this.map.setPaintProperty(
+            //       "bdd-polygons",
+            //       "fill-pattern",
+            //       null
+            //     );
+            // });
           }
           i++;
         };
@@ -417,8 +489,6 @@ export default class databasesMap {
         // filter: ["==", "$type", "Point"],
       });
       */
-
-      // map.setFilter("bdd-lines", ["==", ["get", "isIndeterminate"], false]);
     });
   }
 }

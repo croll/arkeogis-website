@@ -4,6 +4,7 @@ import mapboxgl from "mapbox-gl";
 import area from "@turf/area";
 import gsap from "gsap";
 import Draggable from "gsap/Draggable";
+import bbox from "@turf/bbox";
 
 gsap.registerPlugin(Draggable);
 
@@ -16,7 +17,7 @@ export default class databasesMap {
     this.DATE_MAX = 2020;
     this.NUMBER_OF_CELS = 17;
     this.DB_TYPES = {
-      search: { rgb: [253, 109, 101], hex: "8cb044" },
+      search: { rgb: [253, 109, 101], hex: "fd6d65" },
       inventory: { rgb: [164, 109, 190], hex: "a46dbe" },
       work: { rgb: [140, 176, 68], hex: "8cb044" },
     };
@@ -113,6 +114,7 @@ export default class databasesMap {
 
       // Set properties for each line
       let properties = {
+        id: i,
         name: d[0],
         authors: d[1],
         subject: d[2],
@@ -134,6 +136,7 @@ export default class databasesMap {
         r: this.DB_TYPES[dbType].rgb[0],
         g: this.DB_TYPES[dbType].rgb[1],
         b: this.DB_TYPES[dbType].rgb[2],
+        hex: this.DB_TYPES[dbType].hex,
         stripes: `stripes-${dbType}`,
       };
 
@@ -142,6 +145,7 @@ export default class databasesMap {
       if (d[13] !== "") {
         try {
           geometry = JSON.parse(d[13]);
+          properties.bbox = bbox(geometry);
           properties.area = parseInt(area(geometry));
           this.minArea = Math.min(this.minArea, properties.area);
           // if (properties.area < 90000) {
@@ -158,12 +162,12 @@ export default class databasesMap {
     let sorted = computedDatas.sort(compare).reverse();
 
     // Set "base" and "height" properties
-    for (let i = 0; i < sorted.length; i++) {
-      let cd = computedDatas[i][0];
-      cd.base = 28000 * i;
-      cd.height = 28500 * i;
-      cd.a = gsap.utils.mapRange(this.minArea, this.maxArea, 0.8, 0.3, cd.area);
-    }
+    // for (let i = 0; i < sorted.length; i++) {
+    //   let cd = computedDatas[i][0];
+    //   cd.base = 28000 * i;
+    //   cd.height = 28500 * i;
+    //   cd.a = gsap.utils.mapRange(this.minArea, this.maxArea, 0.8, 0.3, cd.area);
+    // }
 
     return sorted;
   }
@@ -187,6 +191,8 @@ export default class databasesMap {
         geometry,
       });
     });
+
+    console.log(featureCollection);
 
     return featureCollection;
   }
@@ -274,7 +280,7 @@ export default class databasesMap {
   }
 
   applyFilters() {
-    this.map.setFilter("bdd-lines", [
+    const filters = [
       "all",
       ["match", ["get", "type"], this.activeFilters, true, false],
       // [">=", ["get", "startDate"], this.dateFilter[0]],
@@ -289,8 +295,9 @@ export default class databasesMap {
         ["==", ["get", "endDate"], "indéterminé"],
       ],
       ["==", ["get", "isIndeterminate"], false],
-    ]);
-    console.log(`'${this.activeFilters.join("','")}'`);
+    ];
+    this.map.setFilter("bdd-lines", filters);
+    this.map.setFilter("bdd-polygons", filters);
   }
 
   initFilters() {
@@ -352,12 +359,20 @@ export default class databasesMap {
       attributionControl: false,
     });
 
+    // this.map.showTileBoundaries = true;
+
     // Attribution
     this.map.addControl(new mapboxgl.AttributionControl(), "top-right");
+    this.map.addControl(
+      new mapboxgl.NavigationControl({ showCompass: false }),
+      "top-right"
+    );
+    this.map.addControl(new mapboxgl.FullscreenControl());
 
     let geoDatas = this.toGeojson(datas);
 
     this.map.on("load", () => {
+      // Add source
       this.map.addSource("bdd", {
         type: "geojson",
         data: geoDatas,
@@ -366,71 +381,119 @@ export default class databasesMap {
 
       let i = 0;
       for (let type in this.DB_TYPES) {
+        // Create stripes
         const img = new Image(14, 14);
+        // On image load
         img.onload = () => {
+          // Create image
           this.map.addImage(`stripes-${type}`, img);
+          // Init map
           if (i === 2) {
+            // Polygon layer
             this.map.addLayer({
               id: "bdd-polygons",
               type: "fill",
               source: "bdd",
               paint: {
                 "fill-color": "transparent",
-              },
-            });
-            this.map.addLayer({
-              id: "bdd-lines",
-              type: "line",
-              source: "bdd",
-              paint: {
-                "line-width": 2,
-                "line-color": [
-                  "rgba",
-                  ["get", "r"],
-                  ["get", "g"],
-                  ["get", "b"],
-                  ["get", "a"],
-                ],
+                "fill-opacity": 0.5,
               },
             });
 
+            // Lines layer
+            this.map.addLayer(
+              {
+                id: "bdd-lines",
+                type: "line",
+                source: "bdd",
+                paint: {
+                  "line-width": 2,
+                  "line-color": [
+                    "rgb",
+                    ["get", "r"],
+                    ["get", "g"],
+                    ["get", "b"],
+                    // ["get", "a"],
+                  ],
+                },
+              },
+              "bdd-polygons"
+            );
+
+            // Lines layer
+            this.map.addLayer(
+              {
+                id: "bdd-for-mouse",
+                type: "fill",
+                source: "bdd",
+                paint: {
+                  "fill-color": "transparent",
+                  "fill-opacity": 0,
+                },
+              },
+            );
+
+            // Filter
             this.map.setFilter("bdd-lines", [
               "==",
               ["get", "isIndeterminate"],
               false,
             ]);
 
-            this.map.on("mouseover", "bdd-lines", (e) => {
+            // Popup
+            this.popup = new mapboxgl.Popup({
+              anchor: 'right',
+              closeButton: false,
+              closeOnClick: false,
+            });
+
+            // Mouse move
+            this.map.on("mousemove", (e) => {
               var features = this.map.queryRenderedFeatures(e.point, {
-                layers: ["bdd-lines"],
+                layers: ["bdd-for-mouse"],
               });
+              console.log(features);
+              this.map.getCanvas().style.cursor = features.length
+                ? "pointer"
+                : "";
               if (features.length) {
+                const bb = JSON.parse(features[0].properties.bbox);
+                const popupText = `<div>${features[0].properties.name}</div>`;
+                this.popup
+                  .setLngLat([bb[2], bb[3]])
+                  .setHTML(popupText)
+                  .addTo(this.map);
                 this.hoveredStateId = features[0].properties.name;
                 this.map.setFeatureState(
                   { source: "bdd", id: this.hoveredStateId },
                   { hover: true }
                 );
+                // this.map.setPaintProperty(
+                //   "bdd-polygons",
+                //   "fill-pattern",
+                //   features[0].properties.stripes
+                // );
                 this.map.setPaintProperty(
                   "bdd-polygons",
-                  "fill-pattern",
-                  features[0].properties.stripes
+                  "fill-color",
+                  `#${features[0].properties.hex}`
                 );
                 this.map.setFilter("bdd-polygons", [
                   "==",
                   "name",
                   this.hoveredStateId,
                 ]);
+                // this.popup.setLngLat()
               }
             });
 
-            // this.map.on("mouseleave", "bdd-polygons", (e) => {
-            //   console.log("ICI");
-            //     this.map.setPaintProperty(
-            //       "bdd-polygons",
-            //       "fill-pattern",
-            //       null
-            //     );
-            // });
+            this.map.on("mouseleave", "bdd-polygons", (e) => {
+              this.map.setPaintProperty(
+                "bdd-polygons",
+                "fill-color",
+                "transparent"
+              );
+            });
           }
           i++;
         };

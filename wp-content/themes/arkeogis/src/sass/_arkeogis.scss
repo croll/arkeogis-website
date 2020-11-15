@@ -152,7 +152,7 @@ p {
   height: calc(100% - 40px);
   .mapboxgl-ctrl-group:not(:empty) {
     border-radius: 30px;
-  } 
+  }
   .arkeoPopup {
     width: 150px;
     .mapboxgl-popup-content {
@@ -196,8 +196,8 @@ p {
   right: 5px;
 }
 
-  .mapboxgl-ctrl-top-left {
-    .mapboxgl-ctrl-group:nth-child(2) {
-      margin-top: 15px!important;
-    }
+.mapboxgl-ctrl-top-left {
+  .mapboxgl-ctrl-group:nth-child(2) {
+    margin-top: 15px !important;
   }
+}

@@ -607,7 +607,7 @@ export default class databasesMap {
     gsap.set(hightLight.querySelector(".date2"), { innerHTML: endDate });
     const isMinimal = endDatePos - startDatePos > 50;
     if (isMinimal) {
-      hightLight.querySelector('.date2', { paddingLeft: 10 });
+      hightLight.querySelector('.date2', { paddingLeft: '10px' });
     } else {
       hightLight.querySelector('.date2', { paddingLeft: 0, border: '1px solid yellow' });
     }

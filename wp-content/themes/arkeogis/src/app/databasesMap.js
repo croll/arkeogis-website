@@ -25,6 +25,12 @@ export default class databasesMap {
     this.dateFilter = [this.DATE_MIN, this.DATE_MAX];
 
     this.translations = {
+      sites: {
+        fr: "sites",
+        en: "sites",
+        es: "sitios",
+        de: "stätten",
+      },
       search: {
         fr: "Recherche",
       },
@@ -86,7 +92,14 @@ export default class databasesMap {
     for (let i = 1; i < data.length; i++) {
       // Skip line with wrong number of arguments
       var d = data[i];
+
+      // If line not well formatted, skip ip
       if (d.length !== this.NUMBER_OF_CELS) {
+        continue;
+      }
+
+      // If start and end period is undetermined, skip it
+      if (d[6] === "indéterminé" && d[7] === "indéterminé") {
         continue;
       }
 
@@ -111,7 +124,6 @@ export default class databasesMap {
   */
 
       const dbType = this.findTranslation(d[10], lang);
-
       // Set properties for each line
       let properties = {
         id: i,
@@ -132,7 +144,6 @@ export default class databasesMap {
         scale: d[14],
         lang: d[15],
         description: d[16],
-        isIndeterminate: d[6] === "indéterminé" && d[7] === "indéterminé",
         r: this.DB_TYPES[dbType].rgb[0],
         g: this.DB_TYPES[dbType].rgb[1],
         b: this.DB_TYPES[dbType].rgb[2],
@@ -283,7 +294,6 @@ export default class databasesMap {
     const filters = [
       "all",
       ["match", ["get", "type"], this.activeFilters, true, false],
-      // [">=", ["get", "startDate"], this.dateFilter[0]],
       [
         "any",
         [">=", ["get", "startDate"], this.dateFilter[0]],
@@ -294,7 +304,6 @@ export default class databasesMap {
         ["<=", ["get", "endDate"], this.dateFilter[1]],
         ["==", ["get", "endDate"], "indéterminé"],
       ],
-      ["==", ["get", "isIndeterminate"], false],
     ];
     this.map.setFilter("bdd-lines", filters);
     this.map.setFilter("bdd-polygons", filters);
@@ -434,18 +443,13 @@ export default class databasesMap {
               },
             });
 
-            // Filter
-            this.map.setFilter("bdd-lines", [
-              "==",
-              ["get", "isIndeterminate"],
-              false,
-            ]);
-
             // Popup
             this.popup = new mapboxgl.Popup({
-              // anchor: 'right',
+              anchor: "top-right",
               closeButton: false,
               closeOnClick: false,
+              className: "arkeoPopup",
+              offset: [145, -11],
             });
 
             // Mouse move
@@ -460,7 +464,7 @@ export default class databasesMap {
                 // Store feature identifier
                 this.hoveredStateId = hoveredFeature.properties.id;
                 const bb = JSON.parse(hoveredFeature.properties.bbox);
-                const popupText = `<div>${hoveredFeature.properties.name}</div>`;
+                const popupText = `<div class="name">${hoveredFeature.properties.name}</div><div class="date">${hoveredFeature.properties.startDate} / ${hoveredFeature.properties.endDate}</div><div class="sites">${hoveredFeature.properties.nbOfSites} ${this.translations.sites[lang]}</div>`;
                 this.popup
                   .setLngLat([bb[2], bb[3]])
                   .setHTML(popupText)
@@ -482,6 +486,11 @@ export default class databasesMap {
                   "id",
                   this.hoveredStateId,
                 ]);
+                // Display period on time slider
+                this.displayPeriod(
+                  hoveredFeature.properties.startDate,
+                  hoveredFeature.properties.endDate
+                );
                 // Set mouse pointer icon
                 this.map.getCanvas().style.cursor = features.length
                   ? "pointer"
@@ -547,10 +556,29 @@ export default class databasesMap {
     });
   }
   resetPolygonLayerFill() {
-    this.map.setPaintProperty(
-      "bdd-polygons",
-      "fill-pattern",
-      ""
+    this.map.setPaintProperty("bdd-polygons", "fill-pattern", "");
+  }
+
+  displayPeriod(startDate, endDate) {
+    const dateSlider = document.querySelector(".dateSlider");
+    const timelineWidth = dateSlider.getBoundingClientRect().width - 20; //padding
+    const startDatePos = Math.round(
+      gsap.utils.mapRange(
+        this.DATE_MIN,
+        this.DATE_MAX,
+        0,
+        timelineWidth,
+        startDate
+      )
+    );
+    const endDatePos = Math.round(
+      gsap.utils.mapRange(
+        this.DATE_MIN,
+        this.DATE_MAX,
+        0,
+        timelineWidth,
+        endDate
+      )
     );
   }
 }

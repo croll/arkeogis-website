@@ -468,42 +468,46 @@ body.home {
           }
         }
         .knob {
-          width: 16px;
-          height: 26px;
+          width: 46px;
+          height: 56px;
           position: absolute;
-          top: -26px;
+          padding: 15px;
+          top: -45px;
           line-height: 16px;
           display: flex;
           &.knob1 {
             line-height: 16px;
             display: flex;
             left: 0;
-            }
+          }
           &.knob2 {
             right: 0px;
           }
         }
-        .hightlight {
+        .highlight-container {
           position: absolute;
           top: 4px;
-          left: 50px;
-          right: 200px;
           height: 17px;
-          display: flex;
-          justify-content: space-between;
-          padding: 2px;
-          background-color: #8cb044;
-          opacity: 0;
-          visibility: hidden;
-          .date {
-            font-weight: 600;
-            font-size: 12px;
-            line-height: 16px;
-            color: #fff;
-            flex: 0 0 auto;
-            .date1 {
-            }
-            .date2 {
+          overflow: hidden;
+          left: 7px;
+          right: 7px;
+          .highlight {
+            height: 100%;
+            width: 100%;
+            margin-left: 50px;
+            margin-right: 200px;
+            display: flex;
+            justify-content: space-between;
+            padding: 2px;
+            background-color: #8cb044;
+            opacity: 0;
+            visibility: hidden;
+            .date {
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 16px;
+              color: #fff;
+              flex: 0 0 auto;
             }
           }
         }

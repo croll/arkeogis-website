@@ -150,6 +150,9 @@ p {
   left: 20px;
   width: calc(100% - 40px);
   height: calc(100% - 40px);
+  .mapboxgl-ctrl-group:not(:empty) {
+    border-radius: 30px;
+  } 
   .arkeoPopup {
     width: 150px;
     .mapboxgl-popup-content {
@@ -188,5 +191,7 @@ p {
 }
 
 .mapboxgl-ctrl-bottom-left {
-  top: 4px !important;
+  top: 25px !important;
+  left: unset;
+  right: 5px;
 }

@@ -203,8 +203,6 @@ export default class databasesMap {
       });
     });
 
-    console.log(featureCollection);
-
     return featureCollection;
   }
 
@@ -273,6 +271,10 @@ export default class databasesMap {
   filterByType(type) {
     const toolbar = document.querySelector(".app .toolbar");
     if (this.activeFilters.includes(type)) {
+      // Do not allow to remove all filters
+      if (this.activeFilters.length === 1) {
+        return;
+      }
       this.activeFilters = this.activeFilters.filter((val) => val !== type);
       gsap.to(toolbar.querySelector(`[data-set="${type}"]`), { opacity: 0.5 });
     } else {
@@ -308,8 +310,19 @@ export default class databasesMap {
     this.map.setFilter("bdd-lines", filters);
     this.map.setFilter("bdd-polygons", filters);
     this.map.setFilter("bdd-for-mouse", filters);
+    this.resetPresentation();
+  }
+
+  resetPresentation() {
+    if (!this.map) {
+      return;
+    }
     // Reset representation
-    this.resetPolygonLayerFill();
+    this.map.setPaintProperty("bdd-polygons", "fill-pattern", "");
+    // Hide popup
+    this.popup.remove();
+    // Hide highglight on time slider
+    gsap.to(document.querySelector(".dateSlider .highlight"), { autoAlpha: 0 });
   }
 
   initFilters() {
@@ -326,7 +339,7 @@ export default class databasesMap {
         this.filterByType(type);
       }
     });
-    // Button "all"
+    this.resetPresentation();
   }
 
   initKnobs() {
@@ -377,9 +390,9 @@ export default class databasesMap {
     this.map.addControl(new mapboxgl.AttributionControl(), "top-right");
     this.map.addControl(
       new mapboxgl.NavigationControl({ showCompass: false }),
-      "top-right"
+      "top-left"
     );
-    this.map.addControl(new mapboxgl.FullscreenControl());
+    this.map.addControl(new mapboxgl.FullscreenControl(), "top-left");
 
     let geoDatas = this.toGeojson(datas);
 
@@ -489,24 +502,17 @@ export default class databasesMap {
                 // Display period on time slider
                 this.displayPeriod(
                   hoveredFeature.properties.startDate,
-                  hoveredFeature.properties.endDate
+                  hoveredFeature.properties.endDate,
+                  hoveredFeature.properties.hex
                 );
                 // Set mouse pointer icon
                 this.map.getCanvas().style.cursor = features.length
                   ? "pointer"
                   : "";
               } else {
-                this.resetPolygonLayerFill();
+                this.resetPresentation();
               }
             });
-
-            // this.map.on("mouseleave", "bdd-for-mouse", (e) => {
-            //   this.map.setPaintProperty(
-            //     "bdd-polygons",
-            //     "fill-color",
-            //     "transparent"
-            //   );
-            // });
           }
           i++;
         };
@@ -555,13 +561,12 @@ export default class databasesMap {
       */
     });
   }
-  resetPolygonLayerFill() {
-    this.map.setPaintProperty("bdd-polygons", "fill-pattern", "");
-  }
 
-  displayPeriod(startDate, endDate) {
+  displayPeriod(startDate, endDate, color) {
     const dateSlider = document.querySelector(".dateSlider");
-    const timelineWidth = dateSlider.getBoundingClientRect().width - 20; //padding
+    const hightLight = dateSlider.querySelector(".highlight");
+    const hightLightContainer = dateSlider.querySelector(".highlight-container");
+    const timelineWidth = hightLightContainer.getBoundingClientRect().width -60; //padding
     const startDatePos = Math.round(
       gsap.utils.mapRange(
         this.DATE_MIN,
@@ -580,5 +585,19 @@ export default class databasesMap {
         endDate
       )
     );
+    gsap.set(hightLight.querySelector(".date1"), { innerHTML: startDate });
+    gsap.set(hightLight.querySelector(".date2"), { innerHTML: endDate });
+    const isMinimal = endDatePos - startDatePos > 50;
+    if (isMinimal) {
+      hightLight.querySelector('.date2', { paddingLeft: 10 });
+    } else {
+      hightLight.querySelector('.date2', { paddingLeft: 0, border: '1px solid yellow' });
+    }
+    gsap.to(hightLight, {
+      backgroundColor: `#${color}`,
+      autoAlpha: 1,
+      x: startDatePos,
+      width: isMinimal ? endDatePos - startDatePos : 50,
+    });
   }
 }

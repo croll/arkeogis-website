@@ -210,9 +210,11 @@ get_header();
 							<line x1="10.36" y1="6" x2="10.36" y2="15" stroke="#CCCCCC"/>
 						</svg>
 					</div>
-					<div class="hightlight">
-						<div class="date date1">- 300</div>
-						<div class="date date2">1400</div>
+					<div class="highlight-container">
+						<div class="highlight">
+							<div class="date date1">- 300</div>
+							<div class="date date2">1400</div>
+						</div>
 					</div>
 				</div>
 			</div>

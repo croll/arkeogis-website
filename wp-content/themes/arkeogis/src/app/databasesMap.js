@@ -298,6 +298,9 @@ export default class databasesMap {
     ];
     this.map.setFilter("bdd-lines", filters);
     this.map.setFilter("bdd-polygons", filters);
+    this.map.setFilter("bdd-for-mouse", filters);
+    // Reset representation
+    this.resetPolygonLayerFill();
   }
 
   initFilters() {
@@ -421,17 +424,15 @@ export default class databasesMap {
             );
 
             // Lines layer
-            this.map.addLayer(
-              {
-                id: "bdd-for-mouse",
-                type: "fill",
-                source: "bdd",
-                paint: {
-                  "fill-color": "transparent",
-                  "fill-opacity": 0,
-                },
+            this.map.addLayer({
+              id: "bdd-for-mouse",
+              type: "fill",
+              source: "bdd",
+              paint: {
+                "fill-color": "transparent",
+                "fill-opacity": 0,
               },
-            );
+            });
 
             // Filter
             this.map.setFilter("bdd-lines", [
@@ -442,75 +443,66 @@ export default class databasesMap {
 
             // Popup
             this.popup = new mapboxgl.Popup({
-              anchor: 'right',
+              // anchor: 'right',
               closeButton: false,
               closeOnClick: false,
             });
 
             // Mouse move
             this.map.on("mousemove", (e) => {
-              var features = this.map.queryRenderedFeatures(e.point, {
+              // Get hovered feature under cursor
+              const features = this.map.queryRenderedFeatures(e.point, {
                 layers: ["bdd-for-mouse"],
               });
-              console.log(features);
-              this.map.getCanvas().style.cursor = features.length
-                ? "pointer"
-                : "";
+              const hoveredFeature = features[0];
+
               if (features.length) {
-                const bb = JSON.parse(features[0].properties.bbox);
-                const popupText = `<div>${features[0].properties.name}</div>`;
+                // Store feature identifier
+                this.hoveredStateId = hoveredFeature.properties.id;
+                const bb = JSON.parse(hoveredFeature.properties.bbox);
+                const popupText = `<div>${hoveredFeature.properties.name}</div>`;
                 this.popup
                   .setLngLat([bb[2], bb[3]])
                   .setHTML(popupText)
                   .addTo(this.map);
-                this.hoveredStateId = features[0].properties.name;
+
                 this.map.setFeatureState(
                   { source: "bdd", id: this.hoveredStateId },
                   { hover: true }
                 );
-                // this.map.setPaintProperty(
-                //   "bdd-polygons",
-                //   "fill-pattern",
-                //   features[0].properties.stripes
-                // );
+                // Change polygon layer fill
                 this.map.setPaintProperty(
                   "bdd-polygons",
-                  "fill-color",
-                  `#${features[0].properties.hex}`
+                  "fill-pattern",
+                  features[0].properties.stripes
                 );
+                // Only display hovered polygon
                 this.map.setFilter("bdd-polygons", [
                   "==",
-                  "name",
+                  "id",
                   this.hoveredStateId,
                 ]);
-                // this.popup.setLngLat()
+                // Set mouse pointer icon
+                this.map.getCanvas().style.cursor = features.length
+                  ? "pointer"
+                  : "";
+              } else {
+                this.resetPolygonLayerFill();
               }
             });
 
-            this.map.on("mouseleave", "bdd-polygons", (e) => {
-              this.map.setPaintProperty(
-                "bdd-polygons",
-                "fill-color",
-                "transparent"
-              );
-            });
+            // this.map.on("mouseleave", "bdd-for-mouse", (e) => {
+            //   this.map.setPaintProperty(
+            //     "bdd-polygons",
+            //     "fill-color",
+            //     "transparent"
+            //   );
+            // });
           }
           i++;
         };
         img.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill-opacity='0' /%3E%3Cpath d='M-1,1 l2,-2 M0,10 l10,-10 M9,11 l2,-2' stroke='%23${this.DB_TYPES[type].hex}' stroke-width='1'/%3E%3C/svg%3E`;
       }
-
-      // map.on("mouseleave", "bdd-polygons", (e) => {
-      //   if (this.hoveredStateId) {
-      //     map.setFeatureState(
-      //       { source: "bdd", id: this.hoveredStateId },
-      //       { hover: false }
-      //     );
-      //     map.setPaintProperty(this.hoveredLayerId, "fill-pattern", null);
-      //   }
-      //   this.hoveredStateId = null;
-      //   this.hoveredLayerId = null;
-      // });
 
       /*
         map.addLayer({
@@ -553,5 +545,12 @@ export default class databasesMap {
       });
       */
     });
+  }
+  resetPolygonLayerFill() {
+    this.map.setPaintProperty(
+      "bdd-polygons",
+      "fill-pattern",
+      ""
+    );
   }
 }

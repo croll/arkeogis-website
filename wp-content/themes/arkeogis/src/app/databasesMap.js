@@ -208,7 +208,7 @@ export default class databasesMap {
 
   filterByDate() {
     const dateSlider = document.querySelector(".dateSlider");
-    const timelineWidth = dateSlider.getBoundingClientRect().width - 20; //padding
+    const timelineWidth = dateSlider.getBoundingClientRect().width - 60; //padding
     const dateMin = Math.round(
       gsap.utils.mapRange(
         0,
@@ -230,42 +230,7 @@ export default class databasesMap {
     // Update filters
     this.dateFilter = [dateMin, dateMax];
     this.applyFilters();
-
-    // Update labels
-    const startContainer = dateSlider.querySelector(".start");
-    const endContainer = dateSlider.querySelector(".end");
-    gsap.to(startContainer, { x: this.drag1[0].x });
-    gsap.to(endContainer, { x: this.drag2[0].x });
-    if (this.drag1[0].x > 0) {
-      const xPercent1 =
-        this.drag1[0].x < startContainer.getBoundingClientRect().width
-          ? 0
-          : -120;
-      gsap.set(startContainer.querySelector(".year"), {
-        innerHTML: dateMin,
-        xPercent: xPercent1,
-      });
-    } else {
-      gsap.set(startContainer.querySelector(".year"), {
-        innerHTML: dateMin,
-        xPercent: 0,
-      });
-    }
-    if (this.drag2[0].x < 0) {
-      const xPercent2 =
-        this.drag2[0].x == 0 || timelineWidth < timelineWidth + this.drag2[0].x
-          ? 0
-          : 120;
-      gsap.set(endContainer.querySelector(".year"), {
-        innerHTML: dateMax,
-        xPercent: xPercent2,
-      });
-    } else {
-      gsap.set(endContainer.querySelector(".year"), {
-        innerHTML: dateMax,
-        xPercent: 0,
-      });
-    }
+    this.updateKnobsPosition();
   }
 
   filterByType(type) {
@@ -282,13 +247,17 @@ export default class databasesMap {
       gsap.to(toolbar.querySelector(`[data-set="${type}"]`), { opacity: 1 });
     }
     this.applyFilters();
-    // Button all
-    // gsap.to(toolbar.querySelector(`[data-set="all"]`), { opacity: this.activeFilters.length == 3 ? 0.5 : 1});
   }
 
   resetFilters() {
+    // Reset database type filters
     this.activeFilters = ["search", "work", "inventory"];
     gsap.to(document.querySelectorAll(`.app .button`), { opacity: 1 });
+    // Reset timeline
+    this.dateFilter = [this.DATE_MIN, this.DATE_MAX];
+    this.drag1[0].x = 0;
+    this.drag2[0].x = 0;
+    this.updateKnobsPosition();
     this.applyFilters();
   }
 
@@ -360,6 +329,55 @@ export default class databasesMap {
         this.filterByDate();
       },
     });
+  }
+
+  updateKnobsPosition() {
+    const dateSlider = document.querySelector(".dateSlider");
+    const knob1 = dateSlider.querySelector(".knob1");
+    const knob2 = dateSlider.querySelector(".knob2");
+    const startContainer = dateSlider.querySelector(".start");
+    const endContainer = dateSlider.querySelector(".end");
+    const timelineWidth = dateSlider.getBoundingClientRect().width; //padding
+
+    // Knobs
+    if (this.drag1[0].x === 0 && this.drag2[0].x === 0) {
+      gsap.to(knob1, { x: 0 });
+      gsap.to(knob2, { x: 0 });
+    }
+
+    // Knobs labels
+    gsap.to(startContainer, { x: this.drag1[0].x });
+    gsap.to(endContainer, { x: this.drag2[0].x });
+    if (this.drag1[0].x > 0) {
+      const xPercent1 =
+        this.drag1[0].x < startContainer.getBoundingClientRect().width
+          ? 0
+          : -60;
+      gsap.set(startContainer.querySelector(".year"), {
+        innerHTML: this.dateFilter[0],
+        xPercent: xPercent1,
+      });
+    } else {
+      gsap.set(startContainer.querySelector(".year"), {
+        innerHTML: this.dateFilter[0],
+        xPercent: 0,
+      });
+    }
+    if (this.drag2[0].x < 0) {
+      const xPercent2 =
+        this.drag2[0].x == 0 || timelineWidth < timelineWidth + this.drag2[0].x
+          ? 0
+          : 50;
+      gsap.set(endContainer.querySelector(".year"), {
+        innerHTML: this.dateFilter[1],
+        xPercent: xPercent2,
+      });
+    } else {
+      gsap.set(endContainer.querySelector(".year"), {
+        innerHTML: this.dateFilter[1],
+        xPercent: 0,
+      });
+    }
   }
 
   async init(selector, lang) {

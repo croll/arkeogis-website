@@ -1,13 +1,15 @@
 <?php
 /*
-* Template Name: Template page Documentation 
-* Template Post Type: page
+* Template Name: Page Documentation 
 */
 
 get_header();
-get_sidebar();
 ?>
 
+<div class="documentation-wrapper">
+<?php
+	get_sidebar();
+	?>
 	<main id="primary" class="site-main">
 
 		<?php
@@ -20,6 +22,7 @@ get_sidebar();
 		?>
 
 	</main><!-- #main -->
+</div>
 
 <?php
 get_footer();

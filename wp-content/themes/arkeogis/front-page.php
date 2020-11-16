@@ -195,7 +195,7 @@ get_header();
 				</div>
 				<div id="databasesMap"></div>
 				<div class="dateSlider">
-					<div class="year-container start"><div class="year">-6000</div><!--<label><?php pll_e("av. JC");?></label>--></div>
+					<div class="year-container start"><div class="year">-6500</div><!--<label><?php pll_e("av. JC");?></label>--></div>
 					<div class="year-container end"><div class="year">2020</div><!--<label><?php pll_e("ap. JC");?></label>--></div>
 					<div class="knob knob1">
 						<svg width="16" height="26" viewBox="0 0 16 26" fill="none" xmlns="http://www.w3.org/2000/svg">

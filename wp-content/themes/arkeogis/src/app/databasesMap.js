@@ -13,7 +13,7 @@ mapboxgl.accessToken =
 
 export default class databasesMap {
   constructor() {
-    this.DATE_MIN = -6000;
+    this.DATE_MIN = -6500;
     this.DATE_MAX = 2020;
     this.NUMBER_OF_CELS = 17;
     this.DB_TYPES = {

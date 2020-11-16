@@ -58,7 +58,7 @@ get_header();
 					</h3>
 					<div class="text"><?php pll_e("Importer vos données guidé par l’assistance à la correction en ligne, ajouter les méta-données (DublinCore) et obtenir des données inter-opérable.");?>
 					</div>
-					<a href="<?php the_permalink(pll_get_post(10));?>" title="<?php pll_e("Importation  Qualifiée");?>"></a>
+					<a href="<?php the_permalink(pll_get_post(75));?>" title="<?php pll_e("Importation  Qualifiée");?>"></a>
 				</div>
 				<div class="spec">
 					<h3>
@@ -66,7 +66,7 @@ get_header();
 						<div class="num">02</div>
 					</h3>
 					<div class="text"><?php pll_e("Quoi ? où ? quand ? par qui ? Découvrir et interroger des datasets spatialisés pluridiciplinaires, pour un état de l’art de la recherche des données partagés...");?></div>
-					<a href="<?php the_permalink(pll_get_post(10));?>" title="<?php pll_e("Cartographie Interactive");?>"></a>
+					<a href="<?php the_permalink(pll_get_post(885));?>" title="<?php pll_e("Cartographie Interactive");?>"></a>
 				</div>
 				<div class="spec">
 					<h3>
@@ -74,7 +74,7 @@ get_header();
 						<div class="num">03</div>
 					</h3>
 					<div class="text"><?php pll_e("Exporter le résultat de votre recherche dans un format normalisé (CSV) pour le ré-utiliser directement dans les outils de votre choix tableur, QGIS, R...");?></div>
-					<a href="<?php the_permalink(pll_get_post(10));?>" title="<?php pll_e("Exportation Normalisée");?>"></a>
+					<a href="<?php the_permalink(pll_get_post(7061));?>" title="<?php pll_e("Exportation Normalisée");?>"></a>
 				</div>
 				<div class="spec">
 					<h3>
@@ -82,7 +82,7 @@ get_header();
 						<div class="num">04</div>
 					</h3>
 					<div class="text"><?php pll_e("Un espace personnalisé, pour choisir dans l’ensemble des données mises en commun en 4 langues vos aire, chronologie, langue, bases de données et vos termes de travail");?></div>
-					<a href="<?php the_permalink(pll_get_post(10));?>" title="<?php pll_e("Personnaliser");?>"></a>
+					<a href="<?php the_permalink(pll_get_post(878));?>" title="<?php pll_e("Personnaliser");?>"></a>
 				</div>
 				<div class="spec">
 					<h3>
@@ -90,7 +90,7 @@ get_header();
 						<div class="num">05</div>
 					</h3>
 					<div class="text"><?php pll_e("Diffuser le niveau d’information de votre choix, et rendez le accessible dans la communautée d’utilisateurs qualifiés en indiquant comment vous citer");?></div>
-					<a href="<?php the_permalink(pll_get_post(10));?>" title="<?php pll_e("Diffuser");?>"></a>
+					<a href="<?php the_permalink(pll_get_post(7079));?>" title="<?php pll_e("Diffuser");?>"></a>
 				</div>
 				<div class="spec">
 					<h3>
@@ -98,7 +98,7 @@ get_header();
 						<div class="num">06</div>
 					</h3>
 					<div class="text"><?php pll_e("Des identifiants pérennes DOI pour le stokage, des ARK (Archival Resource Key) pour les termes utilisés, un hébergement sécurisé et dupliqué pour une conservation à long terme");?></div>
-					<a href="<?php the_permalink(pll_get_post(10));?>" title="<?php pll_e("Pérenniser");?>"></a>
+					<a href="<?php the_permalink(pll_get_post(1075));?>" title="<?php pll_e("Pérenniser");?>"></a>
 				</div>
 			</div>
 		</div>
@@ -244,7 +244,7 @@ get_header();
 					?>
 						<div class="slide swiper-slide">
 							<div class="container">
-								<a href="<?php echo $n->url;?>" title="<?php echo $n->title;?>" data-id="<?php echo $n->id;?>">
+								<a href="<?php the_permalink(pll_get_post(36));?>" title="<?php echo $n->title;?>" data-id="<?php echo $n->id;?>">
 									<!-- <div class="img-container"> -->
 									<img src="<?php echo $n->image;?>" alt="<?php echo $n->title;?>" />
 									<!-- </div> -->

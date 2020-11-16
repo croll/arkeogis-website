@@ -1,0 +1,33 @@
+.wpcf7 {
+  form {
+    margin-top: 50px;
+    label {
+      display: flex;
+      flex-direction: column;
+      span {
+        margin-top: 8px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+  input,
+  select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    &[type="submit"] {
+      cursor: pointer;
+      border: 3px solid var(--color-accent);
+      background-color: var(--color-accent);
+      color: #000;
+      border-radius: 1000px;
+      padding: 20px 25px;
+      font-weight: 600;
+      &:hover {
+        background-color: #fff;
+        border-width: 3px;
+        border-color: var(--color-accent);
+      }
+    }
+  }
+}

@@ -22,10 +22,6 @@ body.home {
         margin-top: 150px;
       }
       & > h1 {
-        @include up-to-medium-screen {
-          position: relative;
-          margin-top: 270px;
-        }
         margin: 0;
         font-weight: 600;
         font-size: 46px;
@@ -34,8 +30,10 @@ body.home {
         text-align: center;
         color: var(--color-secondary);
         @include up-to-medium-screen {
+          position: relative;
+          margin-top: 270px;
           font-size: 7vw;
-          line-height: 7vw;
+          line-height: 12vw;
         }
       }
       & > h2 {
@@ -45,6 +43,9 @@ body.home {
         line-height: 27px;
         text-align: center;
         color: var(--color-secondary);
+        @include up-to-medium-screen {
+          line-height: 7vw;
+        }
       }
       .button-container {
         position: relative;

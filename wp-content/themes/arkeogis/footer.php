@@ -52,7 +52,9 @@
 <?php wp_footer(); ?>
 
 <script>
-	const arkeo = Beve.arkeogis.initMobileMenu();
+	window.addEventListener('load', function() {
+		Beve.arkeogis.initMobileMenu();
+	});
 </script>
 
 </body>

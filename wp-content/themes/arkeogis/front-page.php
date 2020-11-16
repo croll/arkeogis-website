@@ -221,7 +221,7 @@ get_header();
 		</div>
 		<script>
 			window.addEventListener("load", function() {
-				var dbMap = new Beve.databasesMap("#databasesMap");
+				var dbMap = new Beve.databasesMap();
 				dbMap.init("#databasesMap", "<?php echo pll_current_language() ?>");
 			});
 		</script>

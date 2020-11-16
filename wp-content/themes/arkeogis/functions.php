@@ -160,3 +160,9 @@ require get_template_directory() . '/inc/translations.php';
  * Utils.
  */
 require get_template_directory() . '/inc/utils.php';
+
+/**
+ * Shortcodes.
+ */
+require get_template_directory() . '/inc/shortcodes.php';
+

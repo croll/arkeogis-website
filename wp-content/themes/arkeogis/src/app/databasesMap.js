@@ -17,7 +17,7 @@ export default class databasesMap {
     this.DATE_MAX = 2020;
     this.NUMBER_OF_CELS = 17;
     this.DB_TYPES = {
-      search: { rgb: [253, 109, 101], hex: "fd6d65" },
+      search: { rgb: [245, 146, 3], hex: "f59203" },
       inventory: { rgb: [164, 109, 190], hex: "a46dbe" },
       work: { rgb: [140, 176, 68], hex: "8cb044" },
     };
@@ -48,7 +48,7 @@ export default class databasesMap {
 
   fetchDatas(lang) {
     return new Promise((resolve, reject) => {
-      Papa.parse(`/wp-content/themes/arkeogis/datas/databases-${lang}.csv`, {
+      Papa.parse(`/wp-content/themes/arkeogis/datas/databases-fr.csv`, {
         download: true,
         error: (error) => {
           console.error(`Error fetching databases csv file: ${error}`, error);

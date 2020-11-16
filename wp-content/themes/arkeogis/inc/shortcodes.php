@@ -1,11 +1,9 @@
 <?php
 
-function arkeogis_users_shortcode( $atts ) {
+function arkeogis_users_map_shortcode( $atts ) {
 	$a = shortcode_atts( array(
 		'lang' => 'fr',
   ), $atts );
-
-  $posts = get_mercate_news($a['lang'], -1);
 
   ob_start();
   get_template_part( 'template-parts/shortcode', 'users', $posts );
@@ -14,4 +12,4 @@ function arkeogis_users_shortcode( $atts ) {
   return $outp;
 
 }
-add_shortcode( 'arkeogis_users', 'arkeogis_users_shortcode' );
+add_shortcode( 'arkeogis_users_map', 'arkeogis_users_map_shortcode' );

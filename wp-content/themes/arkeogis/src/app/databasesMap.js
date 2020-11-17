@@ -123,7 +123,7 @@ export default class databasesMap {
     16: "Description"
   */
 
-      const dbType = this.findTranslation(d[10], lang);
+      const dbType = this.findTranslation(d[10], 'fr');
       // Set properties for each line
       let properties = {
         id: i,

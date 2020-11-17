@@ -120,7 +120,8 @@ export default class usersMap {
       container: document.querySelector(selector),
       center: [7.7521113, 48.5734053],
       zoom: 1.5,
-      style: "mapbox://styles/mapbox/dark-v10",
+      // style: "mapbox://styles/mapbox/dark-v10",
+      style: "mapbox://styles/arkeofi/ckh55i3iv056d19p7id6sod6b",
       antialias: true,
     });
 

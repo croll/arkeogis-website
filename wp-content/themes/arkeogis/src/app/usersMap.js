@@ -4,7 +4,7 @@ import MapboxglSpiderifier from "mapboxgl-spiderifier";
 import "../node_modules/mapboxgl-spiderifier/index.css";
 
 mapboxgl.accessToken =
-  "pk.eyJ1IjoiY2hyaXNiZXZlIiwiYSI6ImNrZ3FxZmc2aDA3amgyeHF3eW45YWNvYWcifQ.9NQUkCisnXuiWYAOBmJMvw";
+  "pk.eyJ1IjoiYXJrZW9maSIsImEiOiJja2dvcTFranUwNG5yMnlvaG45bzFsNmtwIn0.NJRCLNOJTIFpUH-pq6ew3g";
 
 export default class usersMap {
   constructor() {

@@ -9,8 +9,7 @@ import bbox from "@turf/bbox";
 gsap.registerPlugin(Draggable);
 
 mapboxgl.accessToken =
-  "pk.eyJ1IjoiY2hyaXNiZXZlIiwiYSI6ImNrZ3FxZmc2aDA3amgyeHF3eW45YWNvYWcifQ.9NQUkCisnXuiWYAOBmJMvw";
-
+  "pk.eyJ1IjoiYXJrZW9maSIsImEiOiJja2dvcTFranUwNG5yMnlvaG45bzFsNmtwIn0.NJRCLNOJTIFpUH-pq6ew3g";
 export default class databasesMap {
   constructor() {
     this.DATE_MIN = -6500;
@@ -397,8 +396,8 @@ export default class databasesMap {
       zoom: 3,
       // pitch: 50,
       // bearing: 20,
-      style: "mapbox://styles/mapbox/dark-v10",
-      // style: "mapbox://styles/arkeofi/ckh55i3iv056d19p7id6sod6b",
+      // style: "mapbox://styles/mapbox/dark-v10",
+      style: "mapbox://styles/arkeofi/ckh55i3iv056d19p7id6sod6b",
       antialias: true,
       attributionControl: false,
     });

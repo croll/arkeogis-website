@@ -43,3 +43,5 @@
   pll_register_string("dernieres actualites", "Dernières <b>actualités</b>", 'Arkeogis', false);
   pll_register_string("date debut", "av. JC", 'Arkeogis', false);
   pll_register_string("date fin", "ap. JC", 'Arkeogis', false);
+  pll_register_string("pour des raisons de visibilité", "Pour des raisons de visibilité, le visualisateur filtre l’affichage des base de données disponibles en fonction de leurs dates de début et de fin. En modifiant les curseurs de début et de fin vous afficherez ainsi les données spécialisées strictement dans cette fourchette temporelle.", 'Arkeogis', true);
+  pll_register_string("Retrouvez sur cette page la liste complete des bases", "Retrouvez sur cette page la liste complète des bases de données disponibles", 'Arkeogis', false);

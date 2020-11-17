@@ -218,6 +218,10 @@ get_header();
 					</div>
 				</div>
 			</div>
+			<div class="explication">
+				<div><?php pll_e("Pour des raisons de visibilité, le visualisateur filtre l’affichage des base de données disponibles en fonction de leurs dates de début et de fin. En modifiant les curseurs de début et de fin vous afficherez ainsi les données spécialisées strictement dans cette fourchette temporelle.");?></div>
+				<a href="<?php the_permalink(pll_get_post(1848));?>"><?php pll_e("Retrouvez sur cette page la liste complète des bases de données disponibles");?></a>
+			</div>
 		</div>
 		<script>
 			window.addEventListener("load", function() {

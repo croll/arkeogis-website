@@ -58,7 +58,7 @@ get_header();
 					</h3>
 					<div class="text"><?php pll_e("Importer vos données guidé par l’assistance à la correction en ligne, ajouter les méta-données (DublinCore) et obtenir des données inter-opérable.");?>
 					</div>
-					<a href="<?php the_permalink(pll_get_post(75));?>" title="<?php pll_e("Importation  Qualifiée");?>"></a>
+					<a href="<?php the_permalink(pll_get_post(67));?>" title="<?php pll_e("Importation  Qualifiée");?>"></a>
 				</div>
 				<div class="spec">
 					<h3>

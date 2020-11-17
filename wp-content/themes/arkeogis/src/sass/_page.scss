@@ -9,6 +9,9 @@ body:not(.home) {
         margin-left: auto;
         margin-right: auto;
         padding-bottom: 80px;
+        a {
+          color: var(--color-accent);
+        }
         ul {
           padding-top: 8px;
           padding-bottom: 8px;

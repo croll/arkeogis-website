@@ -48,7 +48,8 @@ export default class databasesMap {
 
   fetchDatas(lang) {
     return new Promise((resolve, reject) => {
-      Papa.parse(`https://app.arkeogis.org/api/database/export?lang=fr`, {
+      Papa.parse(`/wp-content/themes/arkeogis/datas/databases-fr.csv`, {
+      // Papa.parse(`https://app.arkeogis.org/api/database/export?lang=fr`, {
         download: true,
         error: (error) => {
           console.error(`Error fetching databases csv file: ${error}`, error);

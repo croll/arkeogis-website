@@ -43,74 +43,82 @@ p {
   line-height: 24px;
 }
 
+.tablepress {
+  width: auto !important;
+  thead {
+    th {
+      // color: var(--color-accent) !important;
+      color: #000 !important;
+      background: transparent !important;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding-left: 18px;
+      padding-right: 20px;
+      &:after {
+        left: 20px !important;
+        // right: 50px!important;
+      }
+      &:first-child {
+        padding-left: 27px;
+        &:after {
+          left: 8px !important;
+          // right: 50px!important;
+        }
+      }
+    }
+  }
+  &.collapsed {
+    .column-1 {
+      content: "➕" !important;
+      &:hover {
+        &:before {
+          color: var(--color-accent) !important;
+        }
+      }
+    }
+  }
+  tbody {
+    td {
+      padding-top: 18px;
+      padding-bottom: 18px;
+      padding-left: 20px;
+      padding-right: 20px;
+      min-width: 200px;
+      font-size: 14px;
+      vertical-align: middle;
+      line-height: 22px;
+    }
+    strong,
+    .column-1 {
+      font-size: 14px;
+      line-height: 22px;
+      font-weight: 600;
+      padding-left: 30px !important;
+      &:before {
+        top: 22px !important;
+        background-color: unset !important;
+        color: #000 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
 .dataTables_wrapper {
+  .tablepress {
+    thead {
+      th {
+        padding-left: 40px!important;
+      }
+    }
+  }
   .dataTables_length {
     margin-bottom: 20px;
     margin-left: 10px;
   }
   .dataTables_filter {
     margin-bottom: 20px;
-  }
-  .tablepress {
-    width: auto!important;
-    thead {
-      th {
-        // color: var(--color-accent) !important;
-        color: #000 !important;
-        background: transparent !important;
-        text-transform: uppercase;
-        font-weight: 600;
-        padding-left: 40px;
-        padding-right: 20px;
-        &:after {
-          left: 20px !important;
-          // right: 50px!important;
-        }
-        &:first-child {
-          padding-left: 27px;
-          &:after {
-            left: 8px !important;
-            // right: 50px!important;
-          }
-        }
-      }
-    }
-    &.collapsed {
-      .column-1 {
-        content: "➕" !important;
-        &:hover {
-          &:before {
-            color: var(--color-accent) !important;
-          }
-        }
-      }
-    }
-    tbody {
-      td {
-        padding-top: 18px;
-        padding-bottom: 18px;
-        padding-left: 20px;
-        padding-right: 20px;
-        min-width: 200px;
-        font-size: 14px;
-        vertical-align: middle;
-        line-height: 22px;
-      }
-      strong,
-      .column-1 {
-        font-size: 14px;
-        line-height: 22px;
-        font-weight: 600;
-        padding-left: 30px !important;
-        &:before {
-          top: 22px !important;
-          background-color: unset !important;
-          color: #000 !important;
-          border: none !important;
-          box-shadow: none !important;
-        }
-      }
-    }
   }
   .dataTables_info {
     margin-left: 10px;

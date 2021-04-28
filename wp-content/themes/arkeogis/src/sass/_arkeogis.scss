@@ -67,6 +67,12 @@ p {
       }
     }
   }
+  img {
+    @include up-to-medium-screen {
+      width: calc(100vw  - 150px)!important;
+      height: auto !important;
+    }
+  }
   &.collapsed {
     .column-1 {
       content: "➕" !important;
@@ -87,6 +93,11 @@ p {
       font-size: 14px;
       vertical-align: middle;
       line-height: 22px;
+      @include up-to-medium-screen {
+        min-width: auto;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
     }
     strong,
     .column-1 {
@@ -94,6 +105,9 @@ p {
       line-height: 22px;
       font-weight: 600;
       padding-left: 30px !important;
+      @include up-to-medium-screen {
+        padding-left: 8px !important;
+      }
       &:before {
         top: 22px !important;
         background-color: unset !important;
@@ -109,7 +123,7 @@ p {
   .tablepress {
     thead {
       th {
-        padding-left: 40px!important;
+        padding-left: 40px !important;
       }
     }
   }

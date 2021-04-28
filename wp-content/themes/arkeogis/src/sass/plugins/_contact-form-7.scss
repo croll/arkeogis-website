@@ -499,3 +499,60 @@
     -webkit-box-shadow: 0 0 0px 1000px transparent inset;
   }
 }
+
+.responsive-contact-form {
+  h4 {
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
+  .wpcf7-character-count {
+    font-size: 12px;
+  }
+  textarea {
+    border-radius: 8px;
+  }
+  .form-row {
+    display: flex;
+    @include up-to-medium-screen {
+      flex-direction: column;
+    }
+    b {
+      display: block;
+      font-size: 1rem;
+      font-style: normal;
+      margin-bottom: 8px;
+    }
+    label {
+      font-style: italic;
+      font-size: 0.8rem;
+      min-height: 40px;
+      margin-top: 8px;
+      width: 90%;
+    }
+    input:not([type="submit"]),
+    textarea,
+    select {
+      border: 1px solid #ccc;
+      width: 90%;
+      max-width: 500px;
+    }
+    input:not([type="submit"]),
+    select {
+      height: 2.4rem;
+    }
+    .column-full {
+      flex: 1 1 auto;
+      padding-top: 15px;
+      padding-bottom: 5px;
+    }
+    .column-half {
+      flex: 1 1 auto;
+      width: 50%;
+      padding-top: 15px;
+      padding-bottom: 5px;
+      @include up-to-medium-screen {
+        width: 100%;
+      }
+    }
+  }
+}

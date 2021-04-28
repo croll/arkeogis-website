@@ -7,7 +7,7 @@ header.site-header {
   align-items: center;
   justify-content: space-between;
   top: 0;
-  width: 100vw;
+  width: calc(100vw - 50px);
   max-width: var(--layout-width);
   height: var(--menu-height);
   padding-left: 50px;
@@ -16,6 +16,9 @@ header.site-header {
   @include up-to-large-screen {
     transform: none;
     left: 0;
+  }
+  @include up-to-medium-screen {
+    width: 100vw;
   }
 
   .logo {

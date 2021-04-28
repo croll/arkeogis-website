@@ -82,6 +82,9 @@ body.page-template-page_documentation {
       }
       article {
         padding: 0 !important;
+        @include up-to-medium-screen {
+          max-width: 100vw;
+        }
       }
     }
   }

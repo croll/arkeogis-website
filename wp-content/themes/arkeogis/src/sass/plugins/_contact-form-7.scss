@@ -535,6 +535,9 @@
       border: 1px solid #ccc;
       width: 90%;
       max-width: 500px;
+      @include up-to-medium-screen {
+        max-width: calc(100vw - 120px); 
+      }
     }
     input:not([type="submit"]),
     select {

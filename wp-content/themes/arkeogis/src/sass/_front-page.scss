@@ -15,11 +15,15 @@ body.home {
       left: 50%;
       transform: translate(-50%, -50%);
       width: 100%;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
       @include up-to-medium-screen {
         position: relative;
-        margin-top: 150px;
+        transform: translate(-50%, 0);
+        align-self: flex-start;
       }
       & > h1 {
         margin: 0;
@@ -31,7 +35,7 @@ body.home {
         color: var(--color-secondary);
         @include up-to-medium-screen {
           position: relative;
-          margin-top: 270px;
+          margin-top: 80px;
           font-size: 7vw;
           line-height: 12vw;
         }
@@ -105,19 +109,24 @@ body.home {
       justify-items: center;
       justify-content: space-around;
       position: absolute;
+      top: auto;
       bottom: -20px;
       left: 50%;
       width: calc(100vw - 120px);
       padding-left: var(--layout-padding);
       padding-right: var(--layout-padding);
+      padding-bottom: 20px;
       max-width: 1320px;
       transform: translateX(-50%);
       background-color: #fff;
       border-radius: 20px;
-      padding-bottom: 20px;
       @include up-to-medium-screen {
-        margin-top: -230px;
+        width: 80vw;
         position: relative;
+        margin-top: 48px;
+        left: auto;
+        right: auto;
+        transform: none;
       }
       img {
         margin-top: 18px;

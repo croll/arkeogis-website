@@ -25,14 +25,14 @@ get_header();
 					<a href="https://app.arkeogis.org/#/login" target="_blank"><?php pll_e("Ouvrir l’application");?></a>
 					<a href="<?php the_permalink(pll_get_post(975));?>"><?php pll_e("Créer un compte");?></a>
 				</div>
-			</div>
-			<div class="logos-container">
-				<img class="strasbourg" src="<?php echo get_template_directory_uri().'/assets/images/logos/Universite_de_Strasbourg.jpg';?>" alt="Université de Strasbourg"/>
-				<img class="archimede" src="<?php echo get_template_directory_uri().'/assets/images/logos/Archimed.jpg';?>" alt="Archimede"/>
-				<img class="misha" src="<?php echo get_template_directory_uri().'/assets/images/logos/Misha.jpg';?>" alt="Misha"/>
-				<img class="masa" src="<?php echo get_template_directory_uri().'/assets/images/logos/Masa.jpg';?>" alt="Masa"/>
-				<img class="humanum" src="<?php echo get_template_directory_uri().'/assets/images/logos/Humanum.png';?>" alt="Humanum"/>
-				<a class="partners" href="<?php the_permalink(pll_get_post(75));?>"><?php pll_e("Tous les partenaires");?></a>
+				<div class="logos-container">
+					<img class="strasbourg" src="<?php echo get_template_directory_uri().'/assets/images/logos/Universite_de_Strasbourg.jpg';?>" alt="Université de Strasbourg"/>
+					<img class="archimede" src="<?php echo get_template_directory_uri().'/assets/images/logos/Archimed.jpg';?>" alt="Archimede"/>
+					<img class="misha" src="<?php echo get_template_directory_uri().'/assets/images/logos/Misha.jpg';?>" alt="Misha"/>
+					<img class="masa" src="<?php echo get_template_directory_uri().'/assets/images/logos/Masa.jpg';?>" alt="Masa"/>
+					<img class="humanum" src="<?php echo get_template_directory_uri().'/assets/images/logos/Humanum.png';?>" alt="Humanum"/>
+					<a class="partners" href="<?php the_permalink(pll_get_post(75));?>"><?php pll_e("Tous les partenaires");?></a>
+				</div>
 			</div>
 		</div>
 

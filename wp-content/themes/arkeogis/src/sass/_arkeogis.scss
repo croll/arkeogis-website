@@ -73,6 +73,9 @@ p {
       height: auto !important;
     }
   }
+  a {
+    text-overflow: ellipsis!important;
+  } 
   &.collapsed {
     .column-1 {
       content: "➕" !important;
@@ -97,6 +100,9 @@ p {
         min-width: auto;
         padding-left: 8px;
         padding-right: 8px;
+        a {
+          display: None;
+        }
       }
     }
     strong,
@@ -105,9 +111,6 @@ p {
       line-height: 22px;
       font-weight: 600;
       padding-left: 30px !important;
-      @include up-to-medium-screen {
-        padding-left: 8px !important;
-      }
       &:before {
         top: 22px !important;
         background-color: unset !important;

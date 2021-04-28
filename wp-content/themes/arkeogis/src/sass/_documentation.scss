@@ -14,9 +14,9 @@ body.page-template-page_documentation {
     }
 
     aside {
-      @include up-to-medium-screen {
-        order: 2;
-      }
+        @include up-to-medium-screen {
+          order: 2;
+        }
       .widget_nav_menu {
         padding-top: 60px;
         width: 180px;

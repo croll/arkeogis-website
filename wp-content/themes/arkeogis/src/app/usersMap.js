@@ -119,7 +119,7 @@ export default class usersMap {
     this.map = new mapboxgl.Map({
       container: document.querySelector(selector),
       center: [7.7521113, 48.5734053],
-      zoom: 1.5,
+      zoom: 1,
       style: "mapbox://styles/mapbox/dark-v10",
       antialias: true,
     });

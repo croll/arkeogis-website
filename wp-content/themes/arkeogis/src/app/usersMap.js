@@ -14,7 +14,7 @@ export default class usersMap {
 
   fetchDatas() {
     return new Promise((resolve, reject) => {
-      Papa.parse(`/wp-content/themes/arkeogis/datas/users.csv`, {
+      Papa.parse(`/wp-content/themes/arkeogis/datas/users.csv?${(new Date).getTime()}`, {
         download: true,
         error: (error) => {
           console.error(`Error fetching users csv file: ${error}`, error);

@@ -528,6 +528,9 @@
       min-height: 40px;
       margin-top: 8px;
       width: 90%;
+      @include up-to-medium-screen {
+        width: 100%;
+      }
     }
     input:not([type="submit"]),
     textarea,
@@ -536,11 +539,11 @@
       width: 90%;
       max-width: 500px;
       @include up-to-medium-screen {
-        max-width: calc(100vw - 120px); 
+        width: 100%;
       }
     }
     input:not([type="submit"]),
-    select {
+    select:not([multiple="multiple"]) {
       height: 2.4rem;
     }
     .column-full {

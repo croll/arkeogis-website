@@ -166,3 +166,48 @@ require get_template_directory() . '/inc/utils.php';
  */
 require get_template_directory() . '/inc/shortcodes.php';
 
+add_action( 'tablepress_event_saved_table', 'tablepress_update_auto_export' );
+
+/**
+ * Update the exported CSV file of a table when it is saved.
+ *
+ * The CSV file is saved to http://example.com/wp-content/tables/<table-name>.csv
+ *
+ * @since 1.0.0
+ *
+ * @param string $table_id Table ID.
+ */
+function tablepress_update_auto_export( $table_id ) {
+
+	// Seulement la table users
+
+	if ($table_id != 83) {
+		return;
+	}
+	$exporter = TablePress::load_class( 'TablePress_Export', 'class-export.php', 'classes' );
+
+	// Load table, with table data, options, and visibility settings.
+	$table = TablePress::$model_table->load( $table_id, true, true );
+	// Skip tables that could not be loaded or that are corrupted.
+	if ( is_wp_error( $table ) || ( isset( $table['is_corrupted'] ) && $table['is_corrupted'] ) ) {
+		return;
+	}
+
+	// Export the table.
+	$export_format = 'csv'; // Allowed values: 'csv', html', 'json'.
+	$csv_delimiter = ';';
+	$exported_table = $exporter->export_table( $table, $export_format, $csv_delimiter );
+
+	// Generate a file name.
+	$path = trailingslashit( WP_CONTENT_DIR ) . '/themes/arkeogis/datas/';
+	//$filename = sprintf( '%1$s.csv', sanitize_title_with_dashes( $table['name'] ) );
+	$filename = sprintf( 'users.csv', sanitize_title_with_dashes( $table['name'] ) );
+	$filename = $path . sanitize_file_name( $filename );
+
+	// Create the folder (/wp-content/tables/), if it does not exist.
+	if ( ! is_dir( $path) ) {
+		mkdir( $path );
+	}
+	// Save the exported data to the file.
+	file_put_contents( $filename, $exported_table );
+}
